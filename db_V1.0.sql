@@ -9,13 +9,13 @@ USE `tp_db` ;
 -- Table `tp_db`.`User`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tp_db`.`User` (
-  `IdUser` INT NOT NULL AUTO_INCREMENT,
+  `idUser` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `name` CHAR(32) NOT NULL COMMENT '	',
   `about` VARCHAR(45) NOT NULL,
   `isAnonymous` TINYINT(1) NULL DEFAULT false,
-  PRIMARY KEY (`IdUser`),
+  PRIMARY KEY (`idUser`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC))
 ENGINE = InnoDB;
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `tp_db`.`Forum` (
   PRIMARY KEY (`idForum`),
   INDEX `id_idx` (`idFounder` ASC),
     FOREIGN KEY (`idFounder`)
-    REFERENCES `tp_db`.`User` (`IdUser`)
+    REFERENCES `tp_db`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `tp_db`.`Forum_User` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`idUser`)
-    REFERENCES `tp_db`.`User` (`IdUser`)
+    REFERENCES `tp_db`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `tp_db`.`Thread` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`idAuthor`)
-    REFERENCES `tp_db`.`User` (`IdUser`)
+    REFERENCES `tp_db`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `tp_db`.`Post` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`idAuthor`)
-    REFERENCES `tp_db`.`User` (`IdUser`)
+    REFERENCES `tp_db`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`idThread`)
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `tp_db`.`Subscription` (
   PRIMARY KEY (`idUser`, `idThread`),
   INDEX `idThread_idx` (`idThread` ASC),
     FOREIGN KEY (`idUser`)
-    REFERENCES `tp_db`.`User` (`IdUser`)
+    REFERENCES `tp_db`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY (`idThread`)
@@ -155,11 +155,11 @@ CREATE TABLE IF NOT EXISTS `tp_db`.`Follower` (
   PRIMARY KEY (`idfollower`, `idfollowing`),
   INDEX `idUser_idx` (`idfollowing` ASC),
     FOREIGN KEY (`idfollower`)
-    REFERENCES `tp_db`.`User` (`IdUser`)
+    REFERENCES `tp_db`.`User` (`idUser`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
     FOREIGN KEY (`idfollowing`)
-    REFERENCES `tp_db`.`User` (`IdUser`)
+    REFERENCES `tp_db`.`User` (`idUser`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
