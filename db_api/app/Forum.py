@@ -23,7 +23,6 @@ def createForum():
         data["id"]         = idF
         answer["code"]     = 0
         answer["response"] = data
-
     else:
         answer["code"] = 1
         answer["response"] = functions.error_messages[1]

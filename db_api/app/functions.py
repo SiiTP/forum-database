@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 from flask import request
-import json
 
 #сообщения к кодам ответов (код сообщения равен индексу в массиве)
 error_messages = ["OK",
-         u"Запрашиваемый объект не найден",
-         u"невалидный запрос"]
+         "object not found",
+         "incorrect query",
+         "uncorrect semantic query",
+         "undefined error",
+         "already exists"]
 
-def get_right_json():
-    try:
-        data = request.get_json()
-        return data
-    except:
-        return {"code": 2, "response": error_messages[2]}
+def isString(args):
+    for arg in args:
+        if (not isinstance(arg, basestring)):
+            if arg:
+                return False
+    return True

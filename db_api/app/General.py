@@ -4,7 +4,13 @@ import json
 
 @app.route("/db/api/clear/", methods = ['POST'])
 def clear():
-    response = json.dumps({"code": 0, "response": "OK" })
+    cursor.execute("DELETE FROM User;")
+    cursor.execute("DELETE FROM Forum;")
+    cursor.execute("DELETE FROM Post;")
+    cursor.execute("DELETE FROM Thread;")
+    cursor.execute("DELETE FROM Forum_User;")
+    cursor.execute("DELETE FROM Follower;")
+    response = json.dumps({"code": 0, "response": "OK"})
     return response
     
 @app.route("/db/api/status/", methods = ['GET'])

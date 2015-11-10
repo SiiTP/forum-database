@@ -10,10 +10,10 @@ USE `tp_db` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tp_db`.`User` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(255) NOT NULL,
-  `email` VARCHAR(255) NOT NULL,
-  `name` CHAR(32) NOT NULL COMMENT '	',
-  `about` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(255),
+  `email` VARCHAR(255) NOT NULL UNIQUE,
+  `name` CHAR(32) COMMENT '	',
+  `about` TEXT,
   `isAnonymous` TINYINT(1) NULL DEFAULT false,
   PRIMARY KEY (`idUser`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC))
