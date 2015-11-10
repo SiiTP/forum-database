@@ -74,7 +74,7 @@ def userDetails():
     except:
         return json.dumps({"code": 2, "response": error_messages[2]})
     print(email)
-    if (isString([email])):
+    if (not isString([email])):
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     sql = "SELECT * FROM User WHERE email = %s"

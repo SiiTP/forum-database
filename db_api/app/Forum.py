@@ -4,7 +4,8 @@ import json
 
 @app.route("/db/api/forum/create/", methods = ['POST'])
 def createForum():
-    data = functions.get_right_json()
+
+
     if data.has_key("code"):
         response = json.dumps(data)
         return response
