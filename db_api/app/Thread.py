@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from app import app, cursor
 from functions import *
 from User import *
@@ -63,7 +64,7 @@ def closeThread():
     
 @app.route("/db/api/thread/details/", methods = ['GET'])
 def threadDetails():
-    print("\n\n===================THREAD DETAILS BEGIN=====================\n=====================================================\n")
+    print("\n\n===================THREAD DETAILS BEGIN=====================\n==========================================================\n")
 
     try:
         thread = request.args.get("thread")
@@ -74,7 +75,7 @@ def threadDetails():
     except:
         print("related is empty")
         related = []
-    related = []
+    related = [] # TODO с дополнительной информацией тесты не проходятся почему то
     print("\nrelated : ")
     print(related)
     answer = getThreadDetailsByID(thread, related)
@@ -83,7 +84,7 @@ def threadDetails():
     response = json.dumps({ "code": 0, "response": answer})
     print("\nRESPONSE : ")
     print(response)
-    print("\n===================THREAD DETAILS END=====================\n=====================================================\n")
+    print("\n===================THREAD DETAILS END=====================\n==========================================================\n")
     return response
     
 @app.route("/db/api/thread/list", methods = ['GET'])
@@ -162,7 +163,7 @@ def getThreadDetailsByID(threadID, related):
         answer["forum"] = data_forum
         print("\nAnswer[forum] : ")
         print(answer["forum"])
-    # print("\n\nAnswer : ")
-    # print(answer)
-    # print("\n")
+    print("\n===========Answer getThreadByID() : ")
+    print(answer)
+    print("===================================\n")
     return answer

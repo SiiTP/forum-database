@@ -15,3 +15,11 @@ def isString(args):
             if arg:
                 return False
     return True
+
+def getOptionalParameterOrDefault(json, param, default):
+    try:
+        data = json[param]
+        print("option parameter " + str(param) + " : " + str(data))
+    except:
+        data = default
+    return data
