@@ -11,7 +11,7 @@ USE `tp_db` ;
 CREATE TABLE IF NOT EXISTS `tp_db`.`User` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255),
-  `email` VARCHAR(255) NOT NULL UNIQUE,
+  `email` VARCHAR(255) NOT NULL,
   `name` CHAR(32) COMMENT '	',
   `about` TEXT,
   `isAnonymous` TINYINT(1) NULL DEFAULT false,
@@ -65,7 +65,7 @@ ENGINE = InnoDB;
 -- Table `tp_db`.`Thread`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tp_db`.`Thread` (
-  `idThread` INT NOT NULL,
+  `idThread` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
   `message` TEXT NOT NULL,
   `slug` VARCHAR(255) NOT NULL,

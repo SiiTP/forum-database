@@ -1,0 +1,4 @@
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"forum":"f1","title":"Thread1",  "isClosed":true,  "user" : "a@mail.ru", "date":"2014-01-01 00:00:01", "message":"message_th1", "slug":"th1_slug"}' http://localhost:5000/db/api/thread/create/
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"forum":"f1","title":"Thread2",  "isClosed":false, "user" : "adb@mail.ru", "date":"2014-01-01 00:00:31", "message":"message_th2", "slug":"th1_slug2"}' http://localhost:5000/db/api/thread/create/
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"forum":"f1","title":"Thread2",  "isClosed":false, "user" : "ad@mail.ru", "date":"2014-01-01 00:00:31", "message":"message_th2", "slug":"th1_slug2"}' http://localhost:5000/db/api/thread/create/
+curl -X GET http://localhost:5000/db/api/thread/details/?thread=19

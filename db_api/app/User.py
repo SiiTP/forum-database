@@ -6,13 +6,8 @@ import json
 @app.route("/db/api/user/create/", methods = ['POST'])
 def createUser():
     try:
-
         email    = request.json["email"]
-        print("email :" + email)
     except:
-        print("exception on parsing json EMAIL")
-        print("_____________________")
-        print('\n''\n')
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     try:
@@ -41,7 +36,7 @@ def createUser():
     sql = "SELECT idUser FROM User WHERE email = %s"
     cursor.execute(sql, email)
     if (cursor.fetchone() != None):
-        print(email + " is not found in User")
+        print(email + " is already exists")
         return json.dumps({"code": 5, "response": error_messages[5]})
     print("_____________________")
     print('\n''\n')
@@ -77,25 +72,12 @@ def userDetails():
     if (not isString([email])):
         return json.dumps({"code": 2, "response": error_messages[2]})
 
-    sql = "SELECT * FROM User WHERE email = %s"
-    cursor.execute(sql, email)
-
-    print("RESULT")
-    q_result = cursor.fetchone()
-    print(q_result)
-
-    if (q_result != None):
-        data = {}
-        data['id'] = q_result[0]
-        data['username'] = q_result[1]
-        data['email'] = q_result[2]
-        data['name'] = q_result[3]
-        data['about'] = q_result[4]
-        data['isAnonymous'] = q_result[5]
-        response = json.dumps({ "code": 0, "response": data })
-        return response
+    answer = getUserInfoByEmail(email)
+    if answer != None:
+        return json.dumps({"code": 0, "response": answer})
     else:
-        return json.dumps({ "code": 1, "response": error_messages[1]})
+        return json.dumps({"code": 1, "response": error_messages[1]})
+
 
 @app.route("/db/api/user/follow", methods = ['POST'])
 def follow():
@@ -126,3 +108,39 @@ def unfollow():
 def updateProfile():
     response = json.dumps({ "code": 0 })
     return response
+
+def getUserInfoByEmail(email):
+    sql = "SELECT * FROM User WHERE email = %s"
+    cursor.execute(sql, email)
+
+    q_result = cursor.fetchone()
+
+    if (q_result != None):
+        data = {}
+        data['id'] = q_result[0]
+        data['username'] = q_result[1]
+        data['email'] = q_result[2]
+        data['name'] = q_result[3]
+        data['about'] = q_result[4]
+        data['isAnonymous'] = q_result[5]
+        return data
+    else:
+        return None
+
+def getUserInfoByID(id):
+    sql = "SELECT * FROM User WHERE idUser = %s"
+    cursor.execute(sql, id)
+
+    q_result = cursor.fetchone()
+
+    if (q_result != None):
+        data = {}
+        data['id'] = q_result[0]
+        data['username'] = q_result[1]
+        data['email'] = q_result[2]
+        data['name'] = q_result[3]
+        data['about'] = q_result[4]
+        data['isAnonymous'] = q_result[5]
+        return data
+    else:
+        return None
