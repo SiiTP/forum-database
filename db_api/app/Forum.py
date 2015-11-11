@@ -7,8 +7,14 @@ import json
 
 @app.route("/db/api/forum/create/", methods = ['POST'])
 def createForum():
+    print("\n================FORUM CREATION\n")
+    # print("REQUEST :")
+    # print(request.json)
+    # print("SH_NAME : " + request.json["short_name"])
+    # print("USER : " + request.json["user"])
+    # print("NAME : " + request.json["name"].encode("UTF-8"))
     try:
-        name       = request.json["name"]
+        name       = request.json["name"].encode("UTF-8")
         print("NAME : " + name)
         short_name = request.json["short_name"]
         print("SHORT_NAME : " + short_name)
@@ -38,6 +44,7 @@ def createForum():
     answer = {"code": 0, "response": {"id": idF, "name": name, "short_name":short_name, "user": user}}
 
     response = json.dumps(answer)
+    print("\n================SUCCESSFUL FORUM CREATION\n")
     return response
     
 @app.route("/db/api/forum/details/", methods = ['GET'])

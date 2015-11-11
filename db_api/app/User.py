@@ -5,6 +5,7 @@ import json
 
 @app.route("/db/api/user/create/", methods = ['POST'])
 def createUser():
+    print("\n================USER CREATION\n")
     try:
         email    = request.json["email"]
     except:
@@ -38,8 +39,7 @@ def createUser():
     if (cursor.fetchone() != None):
         print(email + " is already exists")
         return json.dumps({"code": 5, "response": error_messages[5]})
-    print("_____________________")
-    print('\n''\n')
+
     isAnonymous = False
     if ("isAnonymous" in request.json):
         isAnonymous = request.json["isAnonymous"]
@@ -60,6 +60,7 @@ def createUser():
     data['username'] = username
     answer = {"code": 0, "response": data}
     response = json.dumps(answer)
+    print("\n================SUCCESSFUL USER CREATION\n")
     return response
 
 @app.route("/db/api/user/details/", methods = ['GET'])

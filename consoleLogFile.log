@@ -1,0 +1,464 @@
+
+================USER CREATION
+
+
+================SUCCESSFUL USER CREATION
+
+example@mail.ru
+
+================USER CREATION
+
+
+================SUCCESSFUL USER CREATION
+
+richard.nixon@example.com
+
+================USER CREATION
+
+
+================SUCCESSFUL USER CREATION
+
+example2@mail.ru
+
+================USER CREATION
+
+
+================SUCCESSFUL USER CREATION
+
+example3@mail.ru
+
+================USER CREATION
+
+
+================SUCCESSFUL USER CREATION
+
+example4@mail.ru
+
+================FORUM CREATION
+
+NAME : Forum With Sufficiently Large Name
+SHORT_NAME : forumwithsufficientlylargename
+USER : example@mail.ru
+
+================SUCCESSFUL FORUM CREATION
+
+
+================FORUM CREATION
+
+NAME : Forum I
+SHORT_NAME : forum1
+USER : example2@mail.ru
+
+================SUCCESSFUL FORUM CREATION
+
+
+================FORUM CREATION
+
+NAME : Forum II
+SHORT_NAME : forum2
+USER : example2@mail.ru
+
+================SUCCESSFUL FORUM CREATION
+
+
+================FORUM CREATION
+
+NAME : Форум Три
+SHORT_NAME : forum3
+USER : example@mail.ru
+
+================SUCCESSFUL FORUM CREATION
+
+
+================Thread CREATION
+
+
+{"code": 0, "response": {"forum": "forumwithsufficientlylargename", "title": "Thread With Sufficiently Large Title", "posts": 0, "dislikes": 0, "slug": "Threadwithsufficientlylargetitle", "isClosed": true, "points": 0, "likes": 0, "date": "2014-01-01 00:00:01", "message": "hey hey hey hey!", "id": 180, "isDeleted": false, "user": "example4@mail.ru"}}
+
+================SUCCESSFUL THREAD CREATION
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 196L, 'id': 133L, 'short_name': u'forumwithsufficientlylargename', 'name': u'Forum With Sufficiently Large Name'}
+forumwithsufficientlylargename
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forumwithsufficientlylargename", "title": "Thread With Sufficiently Large Title", "dislikes": 0, "slug": "Threadwithsufficientlylargetitle", "isClosed": 1, "user": "example4@mail.ru", "date": "2014-01-01 00:00:01", "message": "hey hey hey hey!", "id": 180, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+================Thread CREATION
+
+
+{"code": 0, "response": {"forum": "forum1", "title": "Thread I", "posts": 0, "dislikes": 0, "slug": "thread1", "isClosed": false, "points": 0, "likes": 0, "date": "2013-12-31 00:01:01", "message": "hey!", "id": 181, "isDeleted": false, "user": "richard.nixon@example.com"}}
+
+================SUCCESSFUL THREAD CREATION
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread I", "dislikes": 0, "slug": "thread1", "isClosed": 0, "user": "richard.nixon@example.com", "date": "2013-12-31 00:01:01", "message": "hey!", "id": 181, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+================Thread CREATION
+
+
+{"code": 0, "response": {"forum": "forum1", "title": "Thread II", "posts": 0, "dislikes": 0, "slug": "thread2", "isClosed": false, "points": 0, "likes": 0, "date": "2013-12-30 00:01:01", "message": "hey hey!", "id": 182, "isDeleted": false, "user": "example@mail.ru"}}
+
+================SUCCESSFUL THREAD CREATION
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread II", "dislikes": 0, "slug": "thread2", "isClosed": 0, "user": "example@mail.ru", "date": "2013-12-30 00:01:01", "message": "hey hey!", "id": 182, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+================Thread CREATION
+
+
+{"code": 0, "response": {"forum": "forum2", "title": "\u0422\u0440\u0435\u0434 \u0422\u0440\u0438", "posts": 0, "dislikes": 0, "slug": "thread3", "isClosed": false, "points": 0, "likes": 0, "date": "2013-12-29 00:01:01", "message": "hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! ", "id": 183, "isDeleted": false, "user": "example4@mail.ru"}}
+
+================SUCCESSFUL THREAD CREATION
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 135L, 'short_name': u'forum2', 'name': u'Forum II'}
+forum2
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum2", "title": "\u0422\u0440\u0435\u0434 \u0422\u0440\u0438", "dislikes": 0, "slug": "thread3", "isClosed": 0, "user": "example4@mail.ru", "date": "2013-12-29 00:01:01", "message": "hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! ", "id": 183, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+================USER CREATION
+
+example@mail.ru is already exists
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 135L, 'short_name': u'forum2', 'name': u'Forum II'}
+forum2
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum2", "title": "\u0422\u0440\u0435\u0434 \u0422\u0440\u0438", "dislikes": 0, "slug": "thread3", "isClosed": 0, "user": "example4@mail.ru", "date": "2013-12-29 00:01:01", "message": "hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! ", "id": 183, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread I", "dislikes": 0, "slug": "thread1", "isClosed": 0, "user": "richard.nixon@example.com", "date": "2013-12-31 00:01:01", "message": "hey!", "id": 181, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread I", "dislikes": 0, "slug": "thread1", "isClosed": 0, "user": "richard.nixon@example.com", "date": "2013-12-31 00:01:01", "message": "hey!", "id": 181, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread II", "dislikes": 0, "slug": "thread2", "isClosed": 0, "user": "example@mail.ru", "date": "2013-12-30 00:01:01", "message": "hey hey!", "id": 182, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread II", "dislikes": 0, "slug": "thread2", "isClosed": 0, "user": "example@mail.ru", "date": "2013-12-30 00:01:01", "message": "hey hey!", "id": 182, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread II", "dislikes": 0, "slug": "thread2", "isClosed": 0, "user": "example@mail.ru", "date": "2013-12-30 00:01:01", "message": "hey hey!", "id": 182, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread II", "dislikes": 0, "slug": "thread2", "isClosed": 0, "user": "example@mail.ru", "date": "2013-12-30 00:01:01", "message": "hey hey!", "id": 182, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread II", "dislikes": 0, "slug": "thread2", "isClosed": 0, "user": "example@mail.ru", "date": "2013-12-30 00:01:01", "message": "hey hey!", "id": 182, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread I", "dislikes": 0, "slug": "thread1", "isClosed": 0, "user": "richard.nixon@example.com", "date": "2013-12-31 00:01:01", "message": "hey!", "id": 181, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 135L, 'short_name': u'forum2', 'name': u'Forum II'}
+forum2
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum2", "title": "\u0422\u0440\u0435\u0434 \u0422\u0440\u0438", "dislikes": 0, "slug": "thread3", "isClosed": 0, "user": "example4@mail.ru", "date": "2013-12-29 00:01:01", "message": "hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! ", "id": 183, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread I", "dislikes": 0, "slug": "thread1", "isClosed": 0, "user": "richard.nixon@example.com", "date": "2013-12-31 00:01:01", "message": "hey!", "id": 181, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 196L, 'id': 133L, 'short_name': u'forumwithsufficientlylargename', 'name': u'Forum With Sufficiently Large Name'}
+forumwithsufficientlylargename
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forumwithsufficientlylargename", "title": "Thread With Sufficiently Large Title", "dislikes": 0, "slug": "Threadwithsufficientlylargetitle", "isClosed": 1, "user": "example4@mail.ru", "date": "2014-01-01 00:00:01", "message": "hey hey hey hey!", "id": 180, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread II", "dislikes": 0, "slug": "thread2", "isClosed": 0, "user": "example@mail.ru", "date": "2013-12-30 00:01:01", "message": "hey hey!", "id": 182, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 134L, 'short_name': u'forum1', 'name': u'Forum I'}
+forum1
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum1", "title": "Thread II", "dislikes": 0, "slug": "thread2", "isClosed": 0, "user": "example@mail.ru", "date": "2013-12-30 00:01:01", "message": "hey hey!", "id": 182, "isDeleted": 0, "likes": 0}}
+
+===================THREAD DETAILS END=====================
+=====================================================
+
+
+
+===================THREAD DETAILS BEGIN=====================
+=====================================================
+
+
+related : 
+[]
+
+forum details : 
+{'idFounder': 198L, 'id': 135L, 'short_name': u'forum2', 'name': u'Forum II'}
+forum2
+
+RESPONSE : 
+{"code": 0, "response": {"forum": "forum2", "title": "\u0422\u0440\u0435\u0434 \u0422\u0440\u0438", "dislikes": 0, "slug": "thread3", "isClosed": 0, "user": "example4@mail.ru", "date": "2013-12-29 00:01:01", "message": "hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey hey hey! hey 
