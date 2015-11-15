@@ -5,7 +5,7 @@ import json
 
 @app.route("/db/api/user/create/", methods = ['POST'])
 def createUser():
-    print("\n================USER CREATION\n")
+    print("\n================USER CREATION")
     try:
         email    = request.json["email"]
     except:
@@ -60,7 +60,7 @@ def createUser():
     data['username'] = username
     answer = {"code": 0, "response": data}
     response = json.dumps(answer)
-    print("\n================SUCCESSFUL USER CREATION\n")
+    print("================SUCCESSFUL USER CREATION\n")
     return response
 
 @app.route("/db/api/user/details/", methods = ['GET'])
@@ -80,9 +80,36 @@ def userDetails():
         return json.dumps({"code": 1, "response": error_messages[1]})
 
 
-@app.route("/db/api/user/follow", methods = ['POST'])
+@app.route("/db/api/user/follow/", methods = ['POST'])
 def follow():
-    response = json.dumps({ "code": 0 })
+    print("\n================USER FOLLOW========================")
+    try:
+        follower = request.json["follower"]
+        followee = request.json["followee"]
+    except:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+    try:
+        idFollower = getUserIdByEmail(follower)
+        idFollowee = getUserIdByEmail(followee)
+    except:
+        return json.dumps({"code": 1, "response": error_messages[1]})
+
+    print("follower : " + str(idFollower))
+    print("followee : " + str(idFollowee))
+    sql = "INSERT INTO Follower(idFollower, idFollowing) VALUES(%s, %s)"
+    cursor.execute(sql, [idFollower, idFollowee])
+
+    emailsFollowers = getFollowerEmails(idFollower)
+    emailsFollowing = getFollowingEmails(idFollower)
+
+    userInfo = getUserInfoByID(idFollower)
+    userInfo["followers"] = emailsFollowers
+    userInfo["following"] = emailsFollowing
+    userInfo["subscriptions"] = []
+    print("Response : ")
+    print(userInfo)
+    response = json.dumps({"code": 0, "response": userInfo})
+    print("================USER FOLLOW SUCCESS================\n")
     return response
 
 @app.route("/db/api/user/listFollowers", methods = ['GET'])
@@ -128,6 +155,12 @@ def getUserInfoByEmail(email):
     else:
         return None
 
+def getUserIdByEmail(email):
+    sql = "SELECT idUser FROM User WHERE email = %s"
+    cursor.execute(sql, email)
+    q_result = cursor.fetchone()[0]
+    return q_result
+
 def getUserInfoByID(id):
     sql = "SELECT * FROM User WHERE idUser = %s"
     cursor.execute(sql, id)
@@ -145,3 +178,23 @@ def getUserInfoByID(id):
         return data
     else:
         return None
+
+def getFollowerEmails(idUser):
+    sql = "SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s"
+    cursor.execute(sql, idUser)
+    emails = getArrayFromDoubleDictionary(cursor.fetchall())
+    print("EMAILS FOLLOWERS OF USER (" + str(idUser) + ") : " + str(emails))
+    return emails
+
+def getFollowingEmails(idUser):
+    sql = "SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s"
+    cursor.execute(sql, idUser)
+    emails = getArrayFromDoubleDictionary(cursor.fetchall())
+    print("EMAILS FOLLOFING OF USER (" + str(idUser) + ") : " + str(emails))
+    return emails
+
+def getArrayFromDoubleDictionary(dictionary):
+    array = []
+    for item in dictionary:
+        array.append(item[0])
+    return array

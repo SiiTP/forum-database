@@ -143,14 +143,14 @@ def threadsList():
     params = []
     if user:
         sql = sql + " AND idAuthor = %s"
-        idAuthor = getUserInfoByEmail(user)["id"] #TODO funciton get ID by email
+        idAuthor = getUserIdByEmail(user) #TODO funciton get ID by email
         params.append(idAuthor)
     if forum:
         sql = sql + " AND idForum = %s"
         idForum = getForumDetailsByShortName(forum)["id"] #TODO funciton get ID by shortname
         params.append(idForum)
     if since:
-        sql = sql + " AND DATE(date) > %s" #TODO optimizate date query
+        sql = sql + " AND DATE(date) >= %s" #TODO optimizate date query
         params.append(since)
     sql = sql + " ORDER BY date " + order
     if limit:
@@ -216,6 +216,12 @@ def getThreadDetailsByID(threadID, related):
     if (not data):
         print("\nThread not found")
         return None
+    try:
+        sql = "SELECT count(*) FROM Post WHERE idThread = %s"
+        cursor.execute(sql, threadID)
+        count_posts = cursor.fetchone()[0]
+    except:
+        count_posts = 0
     answer = {}
     answer["id"] = data[0]
     answer["title"] = data[1]
@@ -229,6 +235,8 @@ def getThreadDetailsByID(threadID, related):
     answer["user"] = getUserInfoByID(data[8])["email"]
     answer["likes"] = data[9]
     answer["dislikes"] = data[10]
+    answer["posts"] = count_posts
+    answer["points"] = answer["likes"] - answer["dislikes"]
     if "user" in related:
         data_user = getUserInfoByEmail(answer["user"])
         answer["user"] = data_user
