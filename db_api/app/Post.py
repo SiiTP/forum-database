@@ -72,7 +72,7 @@ def createPost():
 
 @app.route("/db/api/post/details/", methods = ['GET'])
 def postDetails():
-    print("\n\n===================POST DETAILS BEGIN=====================\n==========================================================\n")
+    print("\n\n===================POST DETAILS BEGIN=====================\n============================================================\n")
 
     try:
         post = request.args.get("post")
@@ -94,7 +94,7 @@ def postDetails():
     response = json.dumps({ "code": 0, "response": answer})
     print("\nRESPONSE : ")
     print(response)
-    print("\n===================POST DETAILS END=====================\n==========================================================\n")
+    print("\n===================POST DETAILS END=====================\n============================================================\n")
     return response
     
 @app.route("/db/api/post/list", methods = ['GET'])
@@ -154,7 +154,7 @@ def getPostDetailsByID(postID, related):
         answer["forum"] = getForumDetailsByShortName(answer["forum"])
     if "thread" in related:
         answer["thread"] = getThreadDetailsByID(answer["thread"], [])
-    print("\n===========Answer getThreadByID() : ")
+    print("\n===========Answer getPostByID() : ")
     print(answer)
     print("===================================\n")
     return answer

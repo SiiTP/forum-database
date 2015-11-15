@@ -24,6 +24,7 @@ def createThread():
         isDeleted = request.json["isDeleted"]
     except:
         isDeleted = False
+
     try:
         id_Forum = getForumDetailsByShortName(forum)["id"]
         id_User = getUserInfoByEmail(user)["id"]
@@ -57,14 +58,36 @@ def createThread():
     print("\n================SUCCESSFUL THREAD CREATION\n")
     return response
     
-@app.route("/db/api/thread/close", methods = ['POST'])
+@app.route("/db/api/thread/close/", methods = ['POST'])
 def closeThread():
-    response = json.dumps({ "code": 0 })
+    print("\n\n=====================================CLOSING THREAD BEGIN==========================================")
+    try:
+        thread = request.json["thread"]
+    except:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+    print("thread : " + str(thread))
+
+    sql = "UPDATE Thread SET isClosed = True WHERE idThread = %s"
+    cursor.execute(sql, thread)
+
+    sql = "SELECT * FROM Thread WHERE idThread = %s"
+    cursor.execute(sql, thread)
+    data = cursor.fetchone()
+    if (not data):
+        print("=====================================CLOSING THREAD END============================================")
+        return json.dumps({"code": 1, "response": error_messages[1]}    )
+
+    answer = {}
+    answer["thread"] = data[0]
+    response = json.dumps({"code": 0, "response": answer })
+    print("response : ")
+    print(response)
+    print("=====================================CLOSING THREAD END============================================")
     return response
     
 @app.route("/db/api/thread/details/", methods = ['GET'])
 def threadDetails():
-    print("\n\n===================THREAD DETAILS BEGIN=====================\n==========================================================\n")
+    print("\n\n===================THREAD DETAILS BEGIN=====================\n==========================================================")
 
     try:
         thread = request.args.get("thread")
@@ -76,20 +99,74 @@ def threadDetails():
         print("related is empty")
         related = []
     related = [] # TODO с дополнительной информацией тесты не проходятся почему то
-    print("\nrelated : ")
+    print("related : ")
     print(related)
     answer = getThreadDetailsByID(thread, related)
     if not answer:
         return json.dumps({"code": 1, "response": error_messages[1]})
     response = json.dumps({ "code": 0, "response": answer})
-    print("\nRESPONSE : ")
+    print("RESPONSE : ")
     print(response)
-    print("\n===================THREAD DETAILS END=====================\n==========================================================\n")
+    print("===================THREAD DETAILS END=====================\n==========================================================\n")
     return response
     
-@app.route("/db/api/thread/list", methods = ['GET'])
+@app.route("/db/api/thread/list/", methods = ['GET'])
 def threadsList():
-    response = json.dumps({ "code": 0 })
+    print("\n\n=====================================THREAD LIST BEGIN============================================")
+    try:
+        user = request.args.get("user")
+        print("User : " + user)
+    except:
+        user = None
+    try:
+        forum = request.args.get("forum")
+        print("Forum : " + forum)
+    except:
+        forum = None
+
+    if not user and not forum:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    try:
+        since = request.args.get("since")
+    except:
+        since = None
+    try:
+        limit = request.args.get("limit")
+    except:
+        limit = None
+    order = request.args.get("order")
+    if not order:
+        order = "desc"
+        print("default order")
+    sql = "SELECT * FROM Thread WHERE 1 = 1 "
+    params = []
+    if user:
+        sql = sql + " AND idAuthor = %s"
+        idAuthor = getUserInfoByEmail(user)["id"] #TODO funciton get ID by email
+        params.append(idAuthor)
+    if forum:
+        sql = sql + " AND idForum = %s"
+        idForum = getForumDetailsByShortName(forum)["id"] #TODO funciton get ID by shortname
+        params.append(idForum)
+    if since:
+        sql = sql + " AND DATE(date) > %s" #TODO optimizate date query
+        params.append(since)
+    sql = sql + " ORDER BY date " + order
+    if limit:
+        sql = sql + " LIMIT " + str(limit)
+    print("FINAL SQL    = " + sql)
+    print("FINAL PARAMS = " + str(params))
+
+    cursor.execute(sql, params)
+    data = cursor.fetchall()
+    answer = []
+    for item in data:
+        answer.append(getThreadDetailsByID(item[0], []))
+    response = json.dumps({"code": 0, "response": answer})
+    print("Response : ")
+    print(response)
+    print("=====================================THREAD LIST END============================================")
     return response
     
 @app.route("/db/api/thread/listPosts", methods = ['GET'])
@@ -148,9 +225,6 @@ def getThreadDetailsByID(threadID, related):
     answer["isClosed"] = data[5]
     answer["isDeleted"] = data[6]
     forum_details = getForumDetailsById(data[7])
-    print("\nforum details : ")
-    print(forum_details)
-    print(forum_details["short_name"])
     answer["forum"] = forum_details["short_name"]
     answer["user"] = getUserInfoByID(data[8])["email"]
     answer["likes"] = data[9]
@@ -161,8 +235,6 @@ def getThreadDetailsByID(threadID, related):
     if "forum" in related:
         data_forum = getForumDetailsByShortName(answer["forum"])
         answer["forum"] = data_forum
-        print("\nAnswer[forum] : ")
-        print(answer["forum"])
     print("\n===========Answer getThreadByID() : ")
     print(answer)
     print("===================================\n")

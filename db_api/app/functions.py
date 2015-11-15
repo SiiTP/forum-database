@@ -16,6 +16,27 @@ def isString(args):
                 return False
     return True
 
+#THREAD
+def getStringExecuteFromAmountParams(n):
+    if n <= 0:
+        return ""
+    str = "%s"
+    for i in range(0, n-2, 1):
+        str += str + ", %s"
+    return str
+
+def parseItemFromDictionary(item):
+    return ge
+    # answer = {}
+    # answer["id"] = item[0]
+    # answer["title"] = item[1]
+    # answer["message"] = item[2]
+    # answer["slug"] = item[3]
+    # answer["date"] = item[4]
+    # answer["isClosed"]  = item[5]
+    # answer["isDeleted"] = item[6]
+
+#POST
 def getOptionalParameterOrDefault(json, param, default):
     try:
         data = json[param]
