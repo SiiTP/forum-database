@@ -1,27 +1,27 @@
 # -*- coding: utf-8 -*-
 from app import app, cursor
 from functions import *
-from User import *
+import User
 from flask import request
 import json
 
 @app.route("/db/api/forum/create/", methods = ['POST'])
 def createForum():
-    print("\n================FORUM CREATION\n")
-    # print("REQUEST :")
-    # print(request.json)
-    # print("SH_NAME : " + request.json["short_name"])
-    # print("USER : " + request.json["user"])
-    # print("NAME : " + request.json["name"].encode("UTF-8"))
+    logging.info("================FORUM CREATION")
+    # logging.info("REQUEST :")
+    # logging.info(request.json)
+    # logging.info("SH_NAME : " + request.json["short_name"])
+    # logging.info("USER : " + request.json["user"])
+    # logging.info("NAME : " + request.json["name"].encode("UTF-8"))
     try:
         name       = request.json["name"].encode("UTF-8")
-        print("NAME : " + name)
+        logging.info("NAME : " + name)
         short_name = request.json["short_name"]
-        print("SHORT_NAME : " + short_name)
+        logging.info("SHORT_NAME : " + short_name)
         user       = request.json["user"]
-        print("USER : " + user)
+        logging.info("USER : " + user)
     except:
-        print("error in parsing params")
+        logging.info("error in parsing params")
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     cursor.execute("SELECT idUser FROM User WHERE User.email = %s", user)
@@ -44,11 +44,13 @@ def createForum():
     answer = {"code": 0, "response": {"id": idF, "name": name, "short_name":short_name, "user": user}}
 
     response = json.dumps(answer)
-    print("\n================SUCCESSFUL FORUM CREATION\n")
+    logging.info("================SUCCESSFUL FORUM CREATION\n")
     return response
     
 @app.route("/db/api/forum/details/", methods = ['GET'])
 def forumDetails():
+    from User import getUserInfoByID
+
     try:
         forum = request.args.get("forum")
         related = request.args.getlist("related")
@@ -105,4 +107,13 @@ def getForumDetailsById(id):
     answer["name"] = data[1]
     answer["short_name"] = data[2]
     answer["idFounder"] = data[3]
+    return answer
+
+def getForumShortNameById(id):
+    sql = "SELECT short_name FROM Forum WHERE idForum = %s"
+    cursor.execute(sql, id)
+    data = cursor.fetchone()
+    if (not data):
+        return None
+    answer = data[0]
     return answer

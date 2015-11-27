@@ -1,12 +1,10 @@
 from flask import Flask
 from flask.ext.mysql import MySQL
 
-
 app = Flask(__name__)
 app.debug = True
 
 mysql = MySQL()
-
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'ivan'
 app.config['MYSQL_DATABASE_DB'] = 'tp_db'

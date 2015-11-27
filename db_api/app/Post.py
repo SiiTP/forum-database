@@ -8,21 +8,21 @@ import json
 
 @app.route("/db/api/post/create/", methods = ['POST'])
 def createPost():
-    print("\n================Post CREATION\n")
-    print("Request : ")
-    print(request.json)
-    print(request.json["thread"])
+    logging.info("================Post CREATION\n")
+    logging.info("Request : ")
+    logging.info(request.json)
+    logging.info(request.json["thread"])
     try:
         thread = request.json["thread"]
         message = request.json["message"]
         date = request.json["date"]
         user = request.json["user"]
         forum = request.json["forum"]
-        print("Thread : " + str(thread))
-        print("Message : " + message)
-        print("Date : " + str(date))
-        print("User : " + str(user))
-        print("Forum : " + str(forum))
+        logging.info("Thread : " + str(thread))
+        logging.info("Message : " + message)
+        logging.info("Date : " + str(date))
+        logging.info("User : " + str(user))
+        logging.info("Forum : " + str(forum))
 
     except:
         return json.dumps({"code": 2, "response": error_messages[2]})
@@ -64,15 +64,15 @@ def createPost():
     answer["forum"] = forum
     answer["thread"] = thread
     answer["user"] = user
-    response = json.dumps({"code": 0, "response": answer })
-    print('\n' + response)
-    print("\n================SUCCESSFUL Post CREATION\n")
+    response = json.dumps({"code": 0, "response": answer})
+    logging.info("  Response : " + response)
+    logging.info("================SUCCESSFUL Post CREATION\n")
     return response
     
 
 @app.route("/db/api/post/details/", methods = ['GET'])
 def postDetails():
-    print("\n\n===================POST DETAILS BEGIN=====================\n============================================================\n")
+    logging.info("===================POST DETAILS BEGIN=====================\n============================================================\n")
 
     try:
         post = request.args.get("post")
@@ -81,20 +81,19 @@ def postDetails():
     try:
         related = request.args.getlist("related")
     except:
-        print("related is empty")
+        logging.info("related is empty")
         related = []
     related = []
-    print("\nrelated : ")
-    print(related)
-    print("post : ")
-    print(post)
+    logging.info("related : ")
+    logging.info(related)
+    logging.info("post : ")
+    logging.info(post)
     answer = getPostDetailsByID(post, related)
     if not answer:
         return json.dumps({"code": 1, "response": error_messages[1]})
     response = json.dumps({ "code": 0, "response": answer})
-    print("\nRESPONSE : ")
-    print(response)
-    print("\n===================POST DETAILS END=====================\n============================================================\n")
+    logging.info("  RESPONSE : " + response)
+    logging.info("===================POST DETAILS END=====================\n============================================================\n")
     return response
     
 @app.route("/db/api/post/list", methods = ['GET'])
@@ -126,9 +125,9 @@ def getPostDetailsByID(postID, related):
     sql = "SELECT * FROM Post WHERE idPost = %s"
     cursor.execute(sql, postID)
     data = cursor.fetchone()
-    print(data)
+    logging.info(data)
     if (not data):
-        print("\nThread not found")
+        logging.info("      Thread not found")
         return None
     answer = {}
     answer["id"] = data[0]
@@ -142,9 +141,9 @@ def getPostDetailsByID(postID, related):
     answer["dislikes"] = data[8]
     answer["date"] = str(data[9])
     answer["message"] = data[10]
-    answer["forum"] = getForumDetailsById(data[11])["short_name"]
+    answer["forum"] = getForumShortNameById(data[11])
     answer["thread"] = data[12]
-    answer["user"] = getUserInfoByID(data[13])["email"]
+    answer["user"] = getUserEmailByID(data[13])
     answer["points"] = answer["likes"] - answer["dislikes"]
 
     if "user" in related:
@@ -154,7 +153,7 @@ def getPostDetailsByID(postID, related):
         answer["forum"] = getForumDetailsByShortName(answer["forum"])
     if "thread" in related:
         answer["thread"] = getThreadDetailsByID(answer["thread"], [])
-    print("\n===========Answer getPostByID() : ")
-    print(answer)
-    print("===================================\n")
+    logging.info("      ===========Answer getPostByID() : ")
+    logging.info(answer)
+    logging.info("      ===================================")
     return answer

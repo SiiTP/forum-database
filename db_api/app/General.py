@@ -4,6 +4,7 @@ import json
 
 @app.route("/db/api/clear/", methods = ['POST'])
 def clear():
+    cursor.execute("DELETE FROM Subscription")
     cursor.execute("DELETE FROM Post")
     cursor.execute("DELETE FROM Thread")
     cursor.execute("DELETE FROM Forum")
