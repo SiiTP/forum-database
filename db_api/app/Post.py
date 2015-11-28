@@ -111,8 +111,9 @@ def restorePost():
     response = json.dumps({ "code": 0 })
     return response
     
-@app.route("/db/api/post/update", methods = ['POST'])
+@app.route("/db/api/post/update/", methods = ['POST'])
 def updatePost():
+
     response = json.dumps({ "code": 0 })
     return response
     

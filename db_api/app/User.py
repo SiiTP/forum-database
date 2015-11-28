@@ -204,8 +204,7 @@ def userListPosts():
         params.append(since)
         sql += " AND P.date >= %s"
 
-    params.append(order)
-    sql += " ORDER BY %s"
+    sql += " ORDER BY P.date " + order
 
     if limit:
         params.append(int(limit))
@@ -337,8 +336,8 @@ def getFollowerEmails(idUser, since, order, limit):
         params.append(int(since))
     if not order:
         order = "desc"
-    sql += " ORDER BY %s"
-    params.append(order)
+    sql += " ORDER BY U.username " + order
+
     if limit:
         sql += " LIMIT %s"
         params.append(int(limit))
@@ -358,8 +357,8 @@ def getFollowingEmails(idUser, since, order, limit):
         params.append(int(since))
     if not order:
         order = "desc"
-    sql += " ORDER BY %s"
-    params.append(order)
+    sql += " ORDER BY U.username " + order
+
     if limit:
         sql += " LIMIT %s"
         params.append(int(limit))

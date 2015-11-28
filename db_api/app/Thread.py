@@ -65,22 +65,20 @@ def closeThread():
         thread = request.json["thread"]
     except:
         return json.dumps({"code": 2, "response": error_messages[2]})
-    logging.info("thread : " + str(thread))
+    logging.info("  thread : " + str(thread))
 
-    sql = "UPDATE Thread SET isClosed = True WHERE idThread = %s"
-    cursor.execute(sql, thread)
-
-    sql = "SELECT * FROM Thread WHERE idThread = %s"
+    sql = "SELECT idThread FROM Thread WHERE idThread = %s"
     cursor.execute(sql, thread)
     data = cursor.fetchone()
     if (not data):
         logging.info("=====================================CLOSING THREAD END WITHOUT DATA===============================\n")
-        return json.dumps({"code": 1, "response": error_messages[1]}    )
+        return json.dumps({"code": 1, "response": error_messages[1]})
 
-    answer = {}
-    answer["thread"] = data[0]
-    response = json.dumps({"code": 0, "response": answer })
-    logging.info("response : ")
+    sql = "UPDATE Thread SET isClosed = 1 WHERE idThread = %s"
+    cursor.execute(sql, thread)
+
+    response = json.dumps({"code": 0, "response": thread})
+    logging.info("  Response : ")
     logging.info(response)
     logging.info("=====================================CLOSING THREAD END============================================\n")
     return response
@@ -143,7 +141,7 @@ def threadsList():
     params = []
     if user:
         sql = sql + " AND idAuthor = %s"
-        idAuthor = getUserIdByEmail(user) #TODO funciton get ID by email
+        idAuthor = getUserIdByEmail(user)
         params.append(idAuthor)
     if forum:
         sql = sql + " AND idForum = %s"
@@ -174,9 +172,25 @@ def threadListPosts():
     response = json.dumps({ "code": 0 })
     return response
     
-@app.route("/db/api/thread/open", methods = ['POST'])
+@app.route("/db/api/thread/open/", methods = ['POST'])
 def openThread():
-    response = json.dumps({ "code": 0 })
+    if "thread" in request.json:
+        thread = request.json["thread"]
+    else:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+    logging.info("  thread : " + str(thread))
+
+    sql = "SELECT idThread FROM Thread WHERE idThread = %s"
+    cursor.execute(sql, thread)
+    data = cursor.fetchone()
+    if not data:
+        logging.info("=====================================CLOSING THREAD END WITHOUT DATA===============================\n")
+        return json.dumps({"code": 1, "response": error_messages[1]})
+
+    sql = "UPDATE Thread SET isClosed = 0 WHERE idThread = %s"
+    cursor.execute(sql, thread)
+
+    response = json.dumps({"code": 0, "response": thread})
     return response
     
 @app.route("/db/api/thread/remove", methods = ['POST'])
@@ -237,7 +251,7 @@ def unsubscribeThread():
     logging.info("=====================UNSUBSCRIBE THREAD SUCCESS======================")
     return response
     
-@app.route("/db/api/thread/update", methods = ['POST'])
+@app.route("/db/api/thread/update/", methods = ['POST'])
 def updateThread():
     logging.info("=======================UPDATE THREAD==========================")
     try:
@@ -247,7 +261,7 @@ def updateThread():
     except:
         return json.dumps({"code": 2, "response": error_messages[2]})
 
-    sql = "UPDATE Thread SET message = %s, slug = % WHERE thread = %s"
+    sql = "UPDATE Thread SET message = %s, slug = %s WHERE idThread = %s"
     cursor.execute(sql, [message, slug, thread])
 
     answer = getThreadDetailsByID(thread, [])
@@ -256,9 +270,36 @@ def updateThread():
 
     return response
     
-@app.route("/db/api/thread/vote", methods = ['POST'])
+@app.route("/db/api/thread/vote/", methods = ['POST'])
 def voteThread():
-    response = json.dumps({ "code": 0 })
+    logging.info("================THREAD VOTE=====================")
+
+    if "vote" in request.json and "thread" in request.json:
+        vote = request.json["vote"]
+        thread = request.json["thread"]
+    else:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    logging.info("  vote : " + str(vote) + ";  thread : " + str(thread))
+
+    if vote == 1:
+        addition = " likes = likes + 1"
+    elif vote == -1:
+        addition = " dislikes = dislikes + 1"
+    else:
+        logging.info("  incorrect vote param : " + str(vote))
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    sql = "UPDATE Thread SET" + addition + " WHERE idThread = %s"
+    cursor.execute(sql, thread)
+
+    answer = getThreadDetailsByID(thread, [])
+
+    response = json.dumps({"code": 0, "response": answer})
+    logging.info("  Response: ")
+    logging.info(response)
+    logging.info("================THREAD VOTE END=================")
+
     return response
 
 def getThreadDetailsByID(threadID, related):
@@ -295,7 +336,7 @@ def getThreadDetailsByID(threadID, related):
     if "forum" in related:
         data_forum = getForumDetailsByShortName(answer["forum"])
         answer["forum"] = data_forum
-    logging.info("===========Answer getThreadByID() : ")
+    logging.info("      ===========Answer getThreadByID() : ")
     logging.info(answer)
-    logging.info("===================================\n")
+    logging.info("      ===================================\n")
     return answer
