@@ -80,7 +80,7 @@ def postDetails():
     try:
         related = request.args.getlist("related")
     except:
-        logging.info("related is empty")
+        logging.info("  related is empty")
         related = []
     related = []
     logging.info("related : ")
@@ -118,7 +118,7 @@ def postsList():
         answer = getListPostsOfThread(thread, since, order, limit)
 
     if forum is not None:
-        answer = getListPostsOfForum(forum, since, order, limit)
+        answer = getListPostsOfForum(forum, since, order, limit, [])
 
 
     response = json.dumps({"code": 0, "response": answer})
@@ -272,7 +272,7 @@ def getListPostsOfThread(thread, since, order, limit):
 
     cursor.execute(sql, params)
     result = cursor.fetchall()
-    answer = getArrayPostsFormDDictionary(result)
+    answer = getArrayPostsFormDDictionary(result, [])
 
     logging.info("      GETTED POSTS : ")
     logging.info(answer)
@@ -280,7 +280,7 @@ def getListPostsOfThread(thread, since, order, limit):
 
     return answer
 
-def getListPostsOfForum(forum, since, order, limit):
+def getListPostsOfForum(forum, since, order, limit, related):
     logging.info("      GETTING LIST POSTS BY FORUM")
     idForum = getForumIdByShortName(forum)
     sql = "SELECT * FROM Post WHERE idForum = %s"
@@ -300,7 +300,7 @@ def getListPostsOfForum(forum, since, order, limit):
 
     cursor.execute(sql, params)
     result = cursor.fetchall()
-    answer = getArrayPostsFormDDictionary(result)
+    answer = getArrayPostsFormDDictionary(result, related)
 
     logging.info("      GETTED POSTS : ")
     logging.info(answer)
@@ -308,7 +308,10 @@ def getListPostsOfForum(forum, since, order, limit):
 
     return answer
 
-def getArrayPostsFormDDictionary(dictionary):
+def getArrayPostsFormDDictionary(dictionary, related):
+    from Thread import getThreadDetailsByID
+    from User import getUserInfoByEmail
+    from Forum import  getForumDetailsByShortName
     array = []
     for item in dictionary:
         dict = {}
@@ -327,6 +330,12 @@ def getArrayPostsFormDDictionary(dictionary):
         dict["thread"] = item[12]
         dict["user"] = getUserEmailByID(item[13])
         dict["points"] = dict["likes"] - dict["dislikes"]
+        if "thread" in related:
+            dict["thread"] = getThreadDetailsByID(dict["thread"], [])
+        if "user" in related:
+            dict["user"] = getUserInfoByEmail(dict["user"])
+        if "forum" in related:
+            dict["forum"] = getForumDetailsByShortName(dict["forum"])
         logging.info("      dictionary item, no message : " + str(dict))
         array.append(dict)
     return array

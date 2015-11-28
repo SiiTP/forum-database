@@ -126,18 +126,10 @@ def threadsList():
     if not user and not forum:
         return json.dumps({"code": 2, "response": error_messages[2]})
 
-    try:
-        since = request.args.get("since")
-    except:
-        since = None
-    try:
-        limit = request.args.get("limit")
-    except:
-        limit = None
-    order = request.args.get("order")
-    if not order:
-        order = "desc"
-        logging.info("default order")
+    limit   = getOptionalGetParameterOrDefault(request.args, "limit", None)
+    order   = getOptionalGetParameterOrDefault(request.args, "order", "desc")
+    since   = getOptionalGetParameterOrDefault(request.args, "since", None)
+
     sql = "SELECT * FROM Thread WHERE 1 = 1 "
     params = []
     if user:

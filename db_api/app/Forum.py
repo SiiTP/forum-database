@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from app import app, cursor
 from functions import *
-import User
 from flask import request
 import json
 
@@ -68,9 +67,39 @@ def forumDetails():
     response = json.dumps({ "code": 0, "response": answer})
     return response
     
-@app.route("/db/api/forum/listPosts", methods = ['GET'])
+@app.route("/db/api/forum/listPosts/", methods = ['GET'])
 def forumListPosts():
-    response = json.dumps({"code": 0, "response": "listPosts"})
+    logging.info("FORUM LIST POSTS===========================")
+    from Post import getListPostsOfForum
+    from Thread import getThreadDetailsByID
+    from User import getUserEmailByID
+
+    forum  = None
+    try:
+        forum = request.args.get("forum")
+    except:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    limit   = getOptionalGetParameterOrDefault(request.args, "limit", None)
+    order   = getOptionalGetParameterOrDefault(request.args, "order", "desc")
+    since   = getOptionalGetParameterOrDefault(request.args, "since", None)
+
+    try:
+        related = request.args.getlist("related")
+    except:
+        logging.info("  related is empty")
+        related = []
+
+    logging.info("  forum   = " + str(forum))
+    logging.info("  related = " + str(related))
+
+    answer = []
+    answer = getListPostsOfForum(forum, since, order, limit, related)
+
+    response = json.dumps({"code": 0, "response": answer})
+    logging.info("  Response : ")
+    logging.info(response)
+    logging.info("FORUM LIST POSTS SUCCESSFUL================")
     return response
     
 @app.route("/db/api/forum/listUsers", methods = ['GET'])
@@ -84,6 +113,7 @@ def forumListThreads():
     return response
 
 def getForumDetailsByShortName(short_name):
+    from User import getUserEmailByID
     sql = "SELECT * FROM Forum WHERE short_name = %s"
     cursor.execute(sql, short_name)
     data = cursor.fetchone()
@@ -94,6 +124,7 @@ def getForumDetailsByShortName(short_name):
     answer["name"] = data[1]
     answer["short_name"] = data[2]
     answer["idFounder"] = data[3]
+    answer["user"] = getUserEmailByID(answer["idFounder"])
     return answer
 
 def getForumIdByShortName(short_name):
