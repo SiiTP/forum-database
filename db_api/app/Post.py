@@ -116,9 +116,36 @@ def updatePost():
     response = json.dumps({ "code": 0 })
     return response
     
-@app.route("/db/api/post/vote", methods = ['POST'])
+@app.route("/db/api/post/vote/", methods = ['POST'])
 def votePost():
-    response = json.dumps({ "code": 0 })
+    logging.info("================POST VOTE=====================")
+
+    if "vote" in request.json and "post" in request.json:
+        vote = request.json["vote"]
+        post = request.json["post"]
+    else:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    logging.info("  vote : " + str(vote) + ";  post : " + str(post))
+
+    if vote == 1:
+        addition = " likes = likes + 1"
+    elif vote == -1:
+        addition = " dislikes = dislikes + 1"
+    else:
+        logging.info("  incorrect vote param : " + str(vote))
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    sql = "UPDATE Post SET" + addition + " WHERE idPost = %s"
+    cursor.execute(sql, post)
+
+    answer = getPostDetailsByID(post, [])
+
+    response = json.dumps({"code": 0, "response": answer})
+    logging.info("  Response: ")
+    logging.info(response)
+    logging.info("================POST VOTE END=================")
+
     return response
 
 def getPostDetailsByID(postID, related):

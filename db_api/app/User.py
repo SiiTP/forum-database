@@ -191,7 +191,7 @@ def userListPosts():
 
     limit = getOptionalGetParameterOrDefault(request.args, "limit", None)
     order = getOptionalGetParameterOrDefault(request.args, "order", "desc")
-    since = getOptionalGetParameterOrDefault(request.args, "since_id", None)
+    since = getOptionalGetParameterOrDefault(request.args, "since", None)
 
     idUser = getUserIdByEmail(user)
     if not idUser:
