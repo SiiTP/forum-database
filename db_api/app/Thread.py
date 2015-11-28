@@ -4,6 +4,7 @@ from functions import *
 from User import *
 from Forum import *
 from flask import request
+import Post
 import json
 
 @app.route("/db/api/thread/create/", methods = ['POST'])
@@ -167,9 +168,31 @@ def threadsList():
     logging.info("=====================================THREAD LIST END============================================")
     return response
     
-@app.route("/db/api/thread/listPosts", methods = ['GET'])
+@app.route("/db/api/thread/listPosts/", methods = ['GET'])
 def threadListPosts():
-    response = json.dumps({ "code": 0 })
+    logging.info("THREAD LIST POSTS===========================")
+
+    from Post import getListPostsOfThread
+    thread  = None
+    try:
+        thread = int(request.args.get("thread"))
+    except:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    limit = getOptionalGetParameterOrDefault(request.args, "limit", None)
+    order = getOptionalGetParameterOrDefault(request.args, "order", "desc")
+    since = getOptionalGetParameterOrDefault(request.args, "since", None)
+    sort  = getOptionalGetParameterOrDefault(request.args, "sort ", "flat")
+    logging.info("  thread  = " + str(thread))
+    logging.info("  sort    = " + str(sort))
+
+    answer = getListPostsOfThread(thread, since, order, limit)
+
+    response = json.dumps({"code": 0, "response": answer})
+    logging.info("  Response : ")
+    logging.info(response)
+
+    logging.info("THREAD LIST POSTS SUCCESSFUL================")
     return response
     
 @app.route("/db/api/thread/open/", methods = ['POST'])
@@ -193,14 +216,54 @@ def openThread():
     response = json.dumps({"code": 0, "response": thread})
     return response
     
-@app.route("/db/api/thread/remove", methods = ['POST'])
+@app.route("/db/api/thread/remove/", methods = ['POST'])
 def removeThread():
-    response = json.dumps({ "code": 0 })
+    from Post import removePostsOfThread
+    if "thread" in request.json:
+        logging.info("REMOVING THREAD")
+
+        thread = request.json["thread"]
+    else:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    sql = "SELECT idThread FROM Thread WHERE idThread = %s"
+    cursor.execute(sql, thread)
+
+    if cursor.fetchone() is None:
+        return json.dumps({"code": 1, "response": error_messages[1]})
+
+    removePostsOfThread(thread)
+
+    sql = "UPDATE Thread SET isDeleted = 1 WHERE idThread = %s"
+    cursor.execute(sql, thread)
+
+    response = json.dumps({ "code": 0, "response": {"thread": thread}})
+    logging.info("REMOVING THREAD SUCCESSFULL\n")
     return response
     
-@app.route("/db/api/thread/restore", methods = ['POST'])
+@app.route("/db/api/thread/restore/", methods = ['POST'])
 def restoreThread():
-    response = json.dumps({ "code": 0 })
+    from Post import restorePostsOfThread
+    if "thread" in request.json:
+        logging.info("RESTORING THREAD")
+
+        thread = request.json["thread"]
+    else:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    sql = "SELECT idThread FROM Thread WHERE idThread = %s"
+    cursor.execute(sql, thread)
+
+    if cursor.fetchone() is None:
+        return json.dumps({"code": 1, "response": error_messages[1]})
+
+    restorePostsOfThread(thread)
+
+    sql = "UPDATE Thread SET isDeleted = 0 WHERE idThread = %s"
+    cursor.execute(sql, thread)
+
+    response = json.dumps({ "code": 0, "response": {"thread": thread}})
+    logging.info("REMOVING THREAD SUCCESSFULL\n")
     return response
     
 @app.route("/db/api/thread/subscribe/", methods = ['POST'])

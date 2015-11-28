@@ -112,7 +112,6 @@ def postsList():
     since = getOptionalGetParameterOrDefault(request.args, "since", None)
 
     logging.info("  thread = " + str(thread))
-    logging.info("  order  = " + str(order))
 
     answer = {}
     if thread is not None:
@@ -331,3 +330,13 @@ def getArrayPostsFormDDictionary(dictionary):
         logging.info("      dictionary item, no message : " + str(dict))
         array.append(dict)
     return array
+
+def removePostsOfThread(thread):
+    logging.info("      removing posts")
+    sql = "UPDATE Post SET isDeleted = 1 WHERE idThread = %s"
+    cursor.execute(sql, thread)
+
+def restorePostsOfThread(thread):
+    logging.info("      restoring posts")
+    sql = "UPDATE Post SET isDeleted = 0 WHERE idThread = %s"
+    cursor.execute(sql, thread)
