@@ -96,6 +96,15 @@ def getForumDetailsByShortName(short_name):
     answer["idFounder"] = data[3]
     return answer
 
+def getForumIdByShortName(short_name):
+    sql = "SELECT idForum FROM Forum WHERE short_name = %s"
+    cursor.execute(sql, short_name)
+    data = cursor.fetchone()
+    if (not data):
+        return None
+    answer = data[0]
+    return answer
+
 def getForumDetailsById(id):
     sql = "SELECT * FROM Forum WHERE idForum = %s"
     cursor.execute(sql, id)

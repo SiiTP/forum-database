@@ -94,16 +94,16 @@ def threadDetails():
     try:
         related = request.args.getlist("related")
     except:
-        logging.info("related is empty")
+        logging.info("  related is empty")
         related = []
     related = [] # TODO с дополнительной информацией тесты не проходятся почему то
-    logging.info("related : ")
+    logging.info("  related : ")
     logging.info(related)
     answer = getThreadDetailsByID(thread, related)
     if not answer:
         return json.dumps({"code": 1, "response": error_messages[1]})
     response = json.dumps({ "code": 0, "response": answer})
-    logging.info("RESPONSE : ")
+    logging.info("  RESPONSE : ")
     logging.info(response)
     logging.info("===================THREAD DETAILS END=====================\n==========================================================\n")
     return response
@@ -310,9 +310,10 @@ def getThreadDetailsByID(threadID, related):
         logging.info("Thread not found")
         return None
     try:
-        sql = "SELECT count(*) FROM Post WHERE idThread = %s"
+        sql = "SELECT count(*) FROM Post WHERE idThread = %s AND isDeleted = 0"
         cursor.execute(sql, threadID)
         count_posts = cursor.fetchone()[0]
+        logging.info("      Count posts of thread " + str(threadID) + " is " + str(count_posts))
     except:
         count_posts = 0
     answer = {}

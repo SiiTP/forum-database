@@ -27,6 +27,8 @@ def getOptionalGetParameterOrDefault(args, param, default):
         data = args.get(param)
     except:
         data = default
+    if data is None:
+        data = default
     logging.info("      option GET parameter " + str(param) + " : " + str(data))
     return data
 #POST

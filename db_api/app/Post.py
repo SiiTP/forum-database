@@ -68,7 +68,6 @@ def createPost():
     logging.info("  Response : " + response)
     logging.info("================SUCCESSFUL Post CREATION\n")
     return response
-    
 
 @app.route("/db/api/post/details/", methods = ['GET'])
 def postDetails():
@@ -96,25 +95,94 @@ def postDetails():
     logging.info("===================POST DETAILS END=====================\n============================================================\n")
     return response
     
-@app.route("/db/api/post/list", methods = ['GET'])
+@app.route("/db/api/post/list/", methods = ['GET'])
 def postsList():
-    response = json.dumps({ "code": 0, "response": "details" })
+    forum   = None
+    thread  = None
+    try:
+        thread = int(request.args.get("thread"))
+    except:
+        try:
+            forum = request.args.get("forum")
+        except:
+            return json.dumps({"code": 2, "response": error_messages[2]})
+
+    limit = getOptionalGetParameterOrDefault(request.args, "limit", None)
+    order = getOptionalGetParameterOrDefault(request.args, "order", "desc")
+    since = getOptionalGetParameterOrDefault(request.args, "since", None)
+
+    logging.info("  thread = " + str(thread))
+    logging.info("  order  = " + str(order))
+
+    answer = {}
+    if thread is not None:
+        answer = getListPostsOfThread(thread, since, order, limit)
+
+    if forum is not None:
+        answer = getListPostsOfForum(forum, since, order, limit)
+
+
+    response = json.dumps({"code": 0, "response": answer})
     return response
 
-@app.route("/db/api/post/remove", methods = ['POST'])
+@app.route("/db/api/post/remove/", methods = ['POST'])
 def removePost():
-    response = json.dumps({ "code": 0 })
+    if "post" in request.json:
+        post = request.json["post"]
+    else:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    sql = "SELECT idPost FROM Post WHERE idPost = %s"
+    cursor.execute(sql, post)
+    result = cursor.fetchone()
+    if not result:
+        return json.dumps({"code": 1, "response": error_messages[1]})
+
+    sql = "UPDATE Post SET isDeleted = 1 WHERE idPost = %s"
+    cursor.execute(sql, post)
+
+    response = json.dumps({"code": 0, "response": post})
     return response
     
-@app.route("/db/api/post/restore", methods = ['POST'])
+@app.route("/db/api/post/restore/", methods = ['POST'])
 def restorePost():
-    response = json.dumps({ "code": 0 })
+    if "post" in request.json:
+        post = request.json["post"]
+    else:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    sql = "SELECT idPost FROM Post WHERE idPost = %s"
+    cursor.execute(sql, post)
+    result = cursor.fetchone()[0]
+
+    if not result:
+        return json.dumps({"code": 1, "response": error_messages[1]})
+
+    sql = "UPDATE Post SET isDeleted = 0 WHERE idPost = %s"
+    cursor.execute(sql, post)
+
+    response = json.dumps({"code": 0, "response": post})
     return response
     
 @app.route("/db/api/post/update/", methods = ['POST'])
 def updatePost():
+    logging.info("  Updating post")
+    if "post" in request.json and "message" in request.json:
+        post = request.json["post"]
+        message = request.json["message"]
+    else:
+        return json.dumps({"code": 2, "response": error_messages[2]})
 
-    response = json.dumps({ "code": 0 })
+    sql = "SELECT idPost FROM Post WHERE idPost = %s"
+    cursor.execute(sql, post)
+    result = cursor.fetchone()[0]
+    if not result:
+        return json.dumps({"code": 1, "response": error_messages[1]})
+
+    sql = "UPDATE Post SET message = %s WHERE idPost = %s"
+    cursor.execute(sql, [message, post])
+    response = json.dumps({"code": 0, "response": post})
+    logging.info("  Post " + str(post) + (" is updated successfully\n"))
     return response
     
 @app.route("/db/api/post/vote/", methods = ['POST'])
@@ -185,3 +253,81 @@ def getPostDetailsByID(postID, related):
     logging.info(answer)
     logging.info("      ===================================")
     return answer
+
+def getListPostsOfThread(thread, since, order, limit):
+    logging.info("      GETTING LIST POSTS BY THREAD")
+    sql = "SELECT * FROM Post WHERE idThread = %s"
+    params = [thread]
+    if since:
+        sql += " AND date >= %s"
+        params.append(since)
+
+    sql += " ORDER BY date " + order
+
+    if limit:
+        sql += " LIMIT %s"
+        params.append(int(limit))
+
+    logging.info("      Final SQL    listPosts : " + sql)
+    logging.info("      Final PARAMS listPosts : " + str(params))
+
+    cursor.execute(sql, params)
+    result = cursor.fetchall()
+    answer = getArrayPostsFormDDictionary(result)
+
+    logging.info("      GETTED POSTS : ")
+    logging.info(answer)
+    logging.info("      ==============")
+
+    return answer
+
+def getListPostsOfForum(forum, since, order, limit):
+    logging.info("      GETTING LIST POSTS BY FORUM")
+    idForum = getForumIdByShortName(forum)
+    sql = "SELECT * FROM Post WHERE idForum = %s"
+    params = [idForum]
+    if since:
+        sql += " AND date >= %s"
+        params.append(since)
+
+    sql += " ORDER BY date " + order
+
+    if limit:
+        sql += " LIMIT %s"
+        params.append(int(limit))
+
+    logging.info("      Final SQL    listPosts : " + sql)
+    logging.info("      Final PARAMS listPosts : " + str(params))
+
+    cursor.execute(sql, params)
+    result = cursor.fetchall()
+    answer = getArrayPostsFormDDictionary(result)
+
+    logging.info("      GETTED POSTS : ")
+    logging.info(answer)
+    logging.info("      ==============")
+
+    return answer
+
+def getArrayPostsFormDDictionary(dictionary):
+    array = []
+    for item in dictionary:
+        dict = {}
+        dict["id"] = item[0]
+        dict["parent"] = item[1]
+        dict["isApproved"] = item[2]
+        dict["isHighlighted"] = item[3]
+        dict["isEdited"] = item[4]
+        dict["isSpam"] = item[5]
+        dict["isDeleted"] = item[6]
+        dict["likes"] = item[7]
+        dict["dislikes"] = item[8]
+        dict["date"] = str(item[9])
+        dict["message"] = item[10]
+        dict["forum"] = getForumShortNameById(item[11])
+        dict["thread"] = item[12]
+        dict["user"] = getUserEmailByID(item[13])
+        dict["points"] = dict["likes"] - dict["dislikes"]
+        logging.info("      dictionary item, no message : " + str(dict))
+        array.append(dict)
+    return array

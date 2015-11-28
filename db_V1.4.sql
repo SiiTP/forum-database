@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `tp_db`.`Post` (
   `idThread` INT NOT NULL,
   `idAuthor` INT NOT NULL,
   PRIMARY KEY (`idPost`),
-  INDEX `idFourm_idx` (`idForum` ASC),
+  INDEX `idForum_idx` (`idForum` ASC),
   INDEX `idUser_idx` (`idAuthor` ASC),
   INDEX `idThread_idx` (`idThread` ASC),
     FOREIGN KEY (`idForum`)
