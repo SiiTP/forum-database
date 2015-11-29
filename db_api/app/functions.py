@@ -39,3 +39,10 @@ def getOptionalParameterOrDefault(json, param, default):
         data = default
     logging.info("      option POST parameter " + str(param) + " : " + str(data))
     return data
+
+def entryRelatedInRightValues(related, right):
+    for item in related:
+        if item not in right:
+            logging.info("      " + str(item) + " not in " + str(right))
+            return False
+    return True

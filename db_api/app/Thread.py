@@ -97,9 +97,11 @@ def threadDetails():
     except:
         logging.info("  related is empty")
         related = []
-    related = [] # TODO с дополнительной информацией тесты не проходятся почему то
     logging.info("  related : ")
     logging.info(related)
+    if not entryRelatedInRightValues(related, ["user", "forum"]):
+        return json.dumps({"code": 3, "response": error_messages[3]})
+    related = []
     answer = getThreadDetailsByID(thread, related)
     if not answer:
         return json.dumps({"code": 1, "response": error_messages[1]})
