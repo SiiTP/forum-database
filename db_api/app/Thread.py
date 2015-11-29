@@ -396,3 +396,58 @@ def getThreadDetailsByID(threadID, related):
     logging.info(answer)
     logging.info("      ===================================\n")
     return answer
+
+def getListThreadsOfForum(forum, since, order, limit, related):
+    sql = "SELECT * FROM Thread WHERE idForum = %s"
+    idForum = getForumIdByShortName(forum)
+    params = [idForum]
+    if since is not None:
+        sql += " AND date >= %s"
+        params.append(since)
+
+    if order is not None:
+        sql += " ORDER BY date " + order
+
+    if limit is not None:
+        sql += " LIMIT %s"
+        params.append(int(limit))
+
+    logging.info("      Final SQL    listThreads : " + sql)
+    logging.info("      Final PARAMS listThreads : " + str(params))
+
+    cursor.execute(sql, params)
+    dictionary = cursor.fetchall()
+    return getArrayThreadsFromDDictionary(dictionary, related)
+
+def getArrayThreadsFromDDictionary(dictionary, related):
+    array = []
+    for item in dictionary:
+        try:
+            threadID = item[0]
+            sql = "SELECT count(*) FROM Post WHERE idThread = %s AND isDeleted = 0"
+            cursor.execute(sql, threadID)
+            count_posts = cursor.fetchone()[0]
+            logging.info("      Count posts of thread " + str(threadID) + " is " + str(count_posts))
+        except:
+            count_posts = 0
+
+        answer = {}
+        answer["id"] = item[0]
+        answer["title"] = item[1]
+        answer["message"] = item[2]
+        answer["slug"] = item[3]
+        answer["date"] = str(item[4])
+        answer["isClosed"] = item[5]
+        answer["isDeleted"] = item[6]
+        answer["forum"] = getForumShortNameById(item[7])
+        answer["user"] = getUserEmailByID(item[8])
+        answer["likes"] = item[9]
+        answer["dislikes"] = item[10]
+        answer["posts"] = count_posts
+        answer["points"] = answer["likes"] - answer["dislikes"]
+        if "user" in related:
+            answer["user"] = getUserInfoByEmail(answer["user"])
+        if "forum" in related:
+            answer["forum"] = getForumDetailsByShortName(answer["forum"])
+        array.append(answer)
+    return array

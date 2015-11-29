@@ -102,14 +102,56 @@ def forumListPosts():
     logging.info("FORUM LIST POSTS SUCCESSFUL================")
     return response
     
-@app.route("/db/api/forum/listUsers", methods = ['GET'])
+@app.route("/db/api/forum/listUsers/", methods = ['GET'])
 def forumListUsers():
-    response = json.dumps({"code": 0, "response": "listUsers"})
+    from User import getListUsersOfForum
+
+    logging.info("FORUM LIST USERS===========================")
+
+    try:
+        forum = request.args.get("forum")
+    except:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    limit   = getOptionalGetParameterOrDefault(request.args, "limit", None)
+    order   = getOptionalGetParameterOrDefault(request.args, "order", "desc")
+    since   = getOptionalGetParameterOrDefault(request.args, "since", None)
+
+    answer = getListUsersOfForum(forum, since, order, limit)
+
+    response = json.dumps({"code": 0, "response": answer})
+    logging.info("  Response : ")
+    logging.info(response)
     return response
     
-@app.route("/db/api/forum/listThreads", methods = ['GET'])
+@app.route("/db/api/forum/listThreads/", methods = ['GET'])
 def forumListThreads():
-    response = json.dumps({"code": 0, "response": "listThreads"})
+    logging.info("FORUM LIST THREADS===========================")
+    from Thread import getListThreadsOfForum
+
+    forum  = None
+    try:
+        forum = request.args.get("forum")
+    except:
+        return json.dumps({"code": 2, "response": error_messages[2]})
+
+    limit   = getOptionalGetParameterOrDefault(request.args, "limit", None)
+    order   = getOptionalGetParameterOrDefault(request.args, "order", "desc")
+    since   = getOptionalGetParameterOrDefault(request.args, "since", None)
+
+    try:
+        related = request.args.getlist("related")
+    except:
+        logging.info("  related is empty")
+        related = []
+
+    logging.info("  forum   = " + str(forum))
+    logging.info("  related = " + str(related))
+
+    answer = getListThreadsOfForum(forum, since, order, limit, related)
+    response = json.dumps({"code": 0, "response": answer})
+    logging.info("  Response : ")
+    logging.info(response)
     return response
 
 def getForumDetailsByShortName(short_name):

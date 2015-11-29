@@ -4,7 +4,7 @@ from flask import request
 import logging
 f = open("myLog.log", "w")
 f.close()
-logging.basicConfig(filename='myLog.log',level=logging.DEBUG, format='%(message)s')
+logging.basicConfig(filename='myLog.log', level=logging.DEBUG, format='%(message)s')
 
 #сообщения к кодам ответов (код сообщения равен индексу в массиве)
 error_messages = ["OK",

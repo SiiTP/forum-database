@@ -388,6 +388,7 @@ def getArrayDictFromDoubleDictionary(dictionary):
 
     array = []
     for item in dictionary:
+
         dict = {}
         dict["id"] = item[0]
         dict["parent"] = item[1]
@@ -404,8 +405,25 @@ def getArrayDictFromDoubleDictionary(dictionary):
         dict["thread"] = item[12]
         dict["user"] = getUserEmailByID(item[13])
         dict["points"] = dict["likes"] - dict["dislikes"]
-        logging.info("      dictionary item, no message : " + str(dict))
+        logging.info("      dictionary item, : " + str(dict))
         array.append(dict)
+    return array
+
+def getArrayUsersFromDoubleDictionary(dictionary):
+    array = []
+    for item in dictionary:
+        data = {}
+        data["id"] = item[0]
+        data["username"] = item[1]
+        data["email"] = item[2]
+        data["name"] = item[3]
+        data["about"] = item[4]
+        data["isAnonymous"] = item[5]
+        data["followers"] = getFollowerEmails(data["id"], None, None, None)
+        data["following"] = getFollowingEmails(data["id"], None, None, None)
+        data["subscriptions"] = getSubscriptions(data["id"])
+        logging.info("      dictionary item : " + str(dict))
+        array.append(data)
     return array
 
 # `idPost` INT NOT NULL AUTO_INCREMENT,
@@ -422,3 +440,27 @@ def getArrayDictFromDoubleDictionary(dictionary):
 #   `idForum` INT NOT NULL,
 #   `idThread` INT NOT NULL,
 #   `idAuthor` INT NOT NULL,
+
+def getListUsersOfForum(forum, since, order, limit):
+    from Forum import getForumIdByShortName
+    sql = "SELECT DISTINCT U.* FROM User U INNER JOIN Post P ON U.idUser = P.idAuthor WHERE P.idForum = %s"
+    idForum = getForumIdByShortName(forum)
+    params = [idForum]
+    if since:
+        sql += " AND U.idUser >= %s"
+        params.append(int(since))
+
+    logging.info("      order = " + order)
+
+    sql += " ORDER BY U.name " + order
+
+    if limit:
+        sql += " LIMIT %s"
+        params.append(int(limit))
+
+    logging.info("      Final SQL    followerEmails : " + sql)
+    logging.info("      Final PARAMS followerEmails : " + str(params))
+    cursor.execute(sql, params)
+    array = getArrayUsersFromDoubleDictionary(cursor.fetchall())
+    logging.info("      LIST USERES OF FORUM (" + str(idForum) + ") : " + str(array))
+    return array
