@@ -36,7 +36,7 @@ def createUser():
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     sql = "SELECT idUser FROM User WHERE email = %s"
-    cursor.execute(sql, email)
+    cursor.execute(sql, [email])
     if (cursor.fetchone() != None):
         logging.info(email + " is already exists")
         return json.dumps({"code": 5, "response": error_messages[5]})
@@ -268,7 +268,7 @@ def updateProfile():
 
 def getUserInfoByEmail(email):
     sql = "SELECT * FROM User WHERE email = %s"
-    cursor.execute(sql, email)
+    cursor.execute(sql, [email])
 
     q_result = cursor.fetchone()
 
@@ -290,14 +290,14 @@ def getUserInfoByEmail(email):
 def getUserIdByEmail(email):
     logging.info("      getting user by email : ")
     sql = "SELECT idUser FROM User WHERE email = %s"
-    cursor.execute(sql, email)
+    cursor.execute(sql, [email])
     q_result = cursor.fetchone()[0]
     logging.info("      getted user by email : " + str(q_result))
     return q_result
 
 def getUserInfoByID(id):
     sql = "SELECT * FROM User WHERE idUser = %s"
-    cursor.execute(sql, id)
+    cursor.execute(sql, [id])
 
     q_result = cursor.fetchone()
 
@@ -318,7 +318,7 @@ def getUserInfoByID(id):
 
 def getUserEmailByID(id):
     sql = "SELECT email FROM User WHERE idUser = %s"
-    cursor.execute(sql, id)
+    cursor.execute(sql, [id])
 
     q_result = cursor.fetchone()
 
@@ -371,7 +371,7 @@ def getFollowingEmails(idUser, since, order, limit):
 
 def getSubscriptions(idUser):
     sql = "SELECT idThread FROM Subscription WHERE idUser = %s"
-    cursor.execute(sql, idUser)
+    cursor.execute(sql, [idUser])
 
     subscriptions = getArrayEmailsFromDoubleDictionary(cursor.fetchall())
     logging.info("      Subscriptions of USER (" + str(idUser) + ") : " + str(subscriptions))

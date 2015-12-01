@@ -132,13 +132,13 @@ def removePost():
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     sql = "SELECT idPost FROM Post WHERE idPost = %s"
-    cursor.execute(sql, post)
+    cursor.execute(sql, [post])
     result = cursor.fetchone()
     if not result:
         return json.dumps({"code": 1, "response": error_messages[1]})
 
     sql = "UPDATE Post SET isDeleted = 1 WHERE idPost = %s"
-    cursor.execute(sql, post)
+    cursor.execute(sql, [post])
 
     response = json.dumps({"code": 0, "response": post})
     return response
@@ -151,14 +151,14 @@ def restorePost():
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     sql = "SELECT idPost FROM Post WHERE idPost = %s"
-    cursor.execute(sql, post)
+    cursor.execute(sql, [post])
     result = cursor.fetchone()[0]
 
     if not result:
         return json.dumps({"code": 1, "response": error_messages[1]})
 
     sql = "UPDATE Post SET isDeleted = 0 WHERE idPost = %s"
-    cursor.execute(sql, post)
+    cursor.execute(sql, [post])
 
     response = json.dumps({"code": 0, "response": post})
     return response
@@ -173,7 +173,7 @@ def updatePost():
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     sql = "SELECT idPost FROM Post WHERE idPost = %s"
-    cursor.execute(sql, post)
+    cursor.execute(sql, [post])
     result = cursor.fetchone()[0]
     if not result:
         return json.dumps({"code": 1, "response": error_messages[1]})
@@ -205,7 +205,7 @@ def votePost():
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     sql = "UPDATE Post SET" + addition + " WHERE idPost = %s"
-    cursor.execute(sql, post)
+    cursor.execute(sql, [post])
 
     answer = getPostDetailsByID(post, [])
 
@@ -218,7 +218,7 @@ def votePost():
 
 def getPostDetailsByID(postID, related):
     sql = "SELECT * FROM Post WHERE idPost = %s"
-    cursor.execute(sql, postID)
+    cursor.execute(sql, [postID])
     data = cursor.fetchone()
     logging.info(data)
     if (not data):
@@ -343,9 +343,9 @@ def getArrayPostsFormDDictionary(dictionary, related):
 def removePostsOfThread(thread):
     logging.info("      removing posts")
     sql = "UPDATE Post SET isDeleted = 1 WHERE idThread = %s"
-    cursor.execute(sql, thread)
+    cursor.execute(sql, [thread])
 
 def restorePostsOfThread(thread):
     logging.info("      restoring posts")
     sql = "UPDATE Post SET isDeleted = 0 WHERE idThread = %s"
-    cursor.execute(sql, thread)
+    cursor.execute(sql, [thread])

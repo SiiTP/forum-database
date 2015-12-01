@@ -69,14 +69,14 @@ def closeThread():
     logging.info("  thread : " + str(thread))
 
     sql = "SELECT idThread FROM Thread WHERE idThread = %s"
-    cursor.execute(sql, thread)
+    cursor.execute(sql, [thread])
     data = cursor.fetchone()
     if (not data):
         logging.info("=====================================CLOSING THREAD END WITHOUT DATA===============================\n")
         return json.dumps({"code": 1, "response": error_messages[1]})
 
     sql = "UPDATE Thread SET isClosed = 1 WHERE idThread = %s"
-    cursor.execute(sql, thread)
+    cursor.execute(sql, [thread])
 
     response = json.dumps({"code": 0, "response": thread})
     logging.info("  Response : ")
@@ -198,14 +198,14 @@ def openThread():
     logging.info("  thread : " + str(thread))
 
     sql = "SELECT idThread FROM Thread WHERE idThread = %s"
-    cursor.execute(sql, thread)
+    cursor.execute(sql, [thread])
     data = cursor.fetchone()
     if not data:
         logging.info("=====================================CLOSING THREAD END WITHOUT DATA===============================\n")
         return json.dumps({"code": 1, "response": error_messages[1]})
 
     sql = "UPDATE Thread SET isClosed = 0 WHERE idThread = %s"
-    cursor.execute(sql, thread)
+    cursor.execute(sql, [thread])
 
     response = json.dumps({"code": 0, "response": thread})
     return response
@@ -221,7 +221,7 @@ def removeThread():
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     sql = "SELECT idThread FROM Thread WHERE idThread = %s"
-    cursor.execute(sql, thread)
+    cursor.execute(sql, [thread])
 
     if cursor.fetchone() is None:
         return json.dumps({"code": 1, "response": error_messages[1]})
@@ -229,7 +229,7 @@ def removeThread():
     removePostsOfThread(thread)
 
     sql = "UPDATE Thread SET isDeleted = 1 WHERE idThread = %s"
-    cursor.execute(sql, thread)
+    cursor.execute(sql, [thread])
 
     response = json.dumps({ "code": 0, "response": {"thread": thread}})
     logging.info("REMOVING THREAD SUCCESSFULL\n")
@@ -246,7 +246,7 @@ def restoreThread():
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     sql = "SELECT idThread FROM Thread WHERE idThread = %s"
-    cursor.execute(sql, thread)
+    cursor.execute(sql, [thread])
 
     if cursor.fetchone() is None:
         return json.dumps({"code": 1, "response": error_messages[1]})
@@ -254,7 +254,7 @@ def restoreThread():
     restorePostsOfThread(thread)
 
     sql = "UPDATE Thread SET isDeleted = 0 WHERE idThread = %s"
-    cursor.execute(sql, thread)
+    cursor.execute(sql, [thread])
 
     response = json.dumps({ "code": 0, "response": {"thread": thread}})
     logging.info("REMOVING THREAD SUCCESSFULL\n")
@@ -348,7 +348,7 @@ def voteThread():
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     sql = "UPDATE Thread SET" + addition + " WHERE idThread = %s"
-    cursor.execute(sql, thread)
+    cursor.execute(sql, [thread])
 
     answer = getThreadDetailsByID(thread, [])
 
@@ -361,14 +361,14 @@ def voteThread():
 
 def getThreadDetailsByID(threadID, related):
     sql = "SELECT * FROM Thread WHERE idThread = %s"
-    cursor.execute(sql, threadID)
+    cursor.execute(sql, [threadID])
     data = cursor.fetchone()
     if (not data):
         logging.info("Thread not found")
         return None
     try:
         sql = "SELECT count(*) FROM Post WHERE idThread = %s AND isDeleted = 0"
-        cursor.execute(sql, threadID)
+        cursor.execute(sql, [threadID])
         count_posts = cursor.fetchone()[0]
         logging.info("      Count posts of thread " + str(threadID) + " is " + str(count_posts))
     except:
@@ -427,7 +427,7 @@ def getArrayThreadsFromDDictionary(dictionary, related):
         try:
             threadID = item[0]
             sql = "SELECT count(*) FROM Post WHERE idThread = %s AND isDeleted = 0"
-            cursor.execute(sql, threadID)
+            cursor.execute(sql, [threadID])
             count_posts = cursor.fetchone()[0]
             logging.info("      Count posts of thread " + str(threadID) + " is " + str(count_posts))
         except:

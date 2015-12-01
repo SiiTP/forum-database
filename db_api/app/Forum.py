@@ -30,7 +30,7 @@ def createForum():
     id_User = id_User[0]
 
     sql = "SELECT * FROM Forum WHERE name = %s"
-    cursor.execute(sql, name)
+    cursor.execute(sql, [name])
     if (cursor.fetchone()):
         return json.dumps({"code": 5, "response": error_messages[5]})
 
@@ -157,7 +157,7 @@ def forumListThreads():
 def getForumDetailsByShortName(short_name):
     from User import getUserEmailByID
     sql = "SELECT * FROM Forum WHERE short_name = %s"
-    cursor.execute(sql, short_name)
+    cursor.execute(sql, [short_name])
     data = cursor.fetchone()
     if (not data):
         return None
@@ -171,7 +171,8 @@ def getForumDetailsByShortName(short_name):
 
 def getForumIdByShortName(short_name):
     sql = "SELECT idForum FROM Forum WHERE short_name = %s"
-    cursor.execute(sql, short_name)
+    print("SHORT_NAME : " + short_name)
+    cursor.execute(sql, [short_name])
     data = cursor.fetchone()
     if (not data):
         return None
@@ -180,7 +181,7 @@ def getForumIdByShortName(short_name):
 
 def getForumDetailsById(id):
     sql = "SELECT * FROM Forum WHERE idForum = %s"
-    cursor.execute(sql, id)
+    cursor.execute(sql, [id])
     data = cursor.fetchone()
     if (not data):
         return None
@@ -193,7 +194,7 @@ def getForumDetailsById(id):
 
 def getForumShortNameById(id):
     sql = "SELECT short_name FROM Forum WHERE idForum = %s"
-    cursor.execute(sql, id)
+    cursor.execute(sql, [id])
     data = cursor.fetchone()
     if (not data):
         return None
