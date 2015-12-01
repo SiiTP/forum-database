@@ -171,7 +171,6 @@ def getForumDetailsByShortName(short_name):
 
 def getForumIdByShortName(short_name):
     sql = "SELECT idForum FROM Forum WHERE short_name = %s"
-    print("SHORT_NAME : " + short_name)
     cursor.execute(sql, [short_name])
     data = cursor.fetchone()
     if (not data):
