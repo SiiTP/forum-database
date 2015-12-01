@@ -1,0 +1,1163 @@
+ * Debugger is active!
+ * Debugger pin code: 142-675-278
+127.0.0.1 - - [01/Dec/2015 12:29:11] "POST /db/api/clear/ HTTP/1.1" 200 -
+================USER CREATION
+================SUCCESSFUL USER CREATION
+
+127.0.0.1 - - [01/Dec/2015 12:29:11] "POST /db/api/user/create/ HTTP/1.1" 200 -
+example@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [1L]
+      EMAILS FOLLOWERS OF USER (1) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [1L]
+      EMAILS FOLLOWING OF USER (1) : []
+      Subscriptions of USER (1) : []
+127.0.0.1 - - [01/Dec/2015 12:29:11] "GET /db/api/user/details/?user=example%40mail.ru HTTP/1.1" 200 -
+================USER CREATION
+================SUCCESSFUL USER CREATION
+
+127.0.0.1 - - [01/Dec/2015 12:29:11] "POST /db/api/user/create/ HTTP/1.1" 200 -
+richard.nixon@example.com
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [2L]
+      EMAILS FOLLOWERS OF USER (2) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [2L]
+      EMAILS FOLLOWING OF USER (2) : []
+      Subscriptions of USER (2) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=richard.nixon%40example.com HTTP/1.1" 200 -
+================USER CREATION
+================SUCCESSFUL USER CREATION
+
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/user/create/ HTTP/1.1" 200 -
+example2@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [3L]
+      EMAILS FOLLOWERS OF USER (3) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [3L]
+      EMAILS FOLLOWING OF USER (3) : []
+      Subscriptions of USER (3) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=example2%40mail.ru HTTP/1.1" 200 -
+================USER CREATION
+================SUCCESSFUL USER CREATION
+
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/user/create/ HTTP/1.1" 200 -
+example3@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : []
+      Subscriptions of USER (4) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=example3%40mail.ru HTTP/1.1" 200 -
+================USER CREATION
+================SUCCESSFUL USER CREATION
+
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/user/create/ HTTP/1.1" 200 -
+example4@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [5L]
+      EMAILS FOLLOWERS OF USER (5) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [5L]
+      EMAILS FOLLOWING OF USER (5) : []
+      Subscriptions of USER (5) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=example4%40mail.ru HTTP/1.1" 200 -
+================FORUM CREATION
+NAME : Forum With Sufficiently Large Name
+SHORT_NAME : forumwithsufficientlylargename
+USER : example3@mail.ru
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/forum/create/ HTTP/1.1" 500 -
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/forum/details/?related=user&forum=forumwithsufficientlylargename HTTP/1.1" 200 -
+================FORUM CREATION
+NAME : Forum I
+SHORT_NAME : forum1
+USER : example2@mail.ru
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/forum/create/ HTTP/1.1" 500 -
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/forum/details/?related=user&forum=forum1 HTTP/1.1" 200 -
+================FORUM CREATION
+NAME : Forum II
+SHORT_NAME : forum2
+USER : richard.nixon@example.com
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/forum/create/ HTTP/1.1" 500 -
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/forum/details/?related=user&forum=forum2 HTTP/1.1" 200 -
+================FORUM CREATION
+NAME : Форум Три
+SHORT_NAME : forum3
+USER : richard.nixon@example.com
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/forum/create/ HTTP/1.1" 500 -
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/forum/details/?related=user&forum=forum3 HTTP/1.1" 200 -
+================Thread CREATION
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/create/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[u'forum', u'user']
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?related=forum&related=user&thread=-1 HTTP/1.1" 200 -
+================Thread CREATION
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/create/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[u'forum', u'user']
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?related=forum&related=user&thread=-1 HTTP/1.1" 200 -
+================Thread CREATION
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/create/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[u'forum', u'user']
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?related=forum&related=user&thread=-1 HTTP/1.1" 200 -
+================Thread CREATION
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/create/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[u'forum', u'user']
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?related=forum&related=user&thread=-1 HTTP/1.1" 200 -
+================Post CREATION
+
+Request : 
+{u'forum': u'forum3', u'thread': -1, u'isApproved': True, u'isDeleted': False, u'user': u'example4@mail.ru', u'isEdited': True, u'date': u'2014-01-01 00:00:01', u'message': u'my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1', u'isSpam': False, u'isHighlighted': True}
+-1
+Thread : -1
+Message : my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1
+Date : 2014-01-01 00:00:01
+User : example4@mail.ru
+Forum : forum3
+      option POST parameter parent : None
+      option POST parameter isApproved : True
+      option POST parameter isHighlighted : True
+      option POST parameter isEdited : True
+      option POST parameter isSpam : False
+      option POST parameter isDeleted : False
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/post/create/ HTTP/1.1" 200 -
+===================POST DETAILS BEGIN=====================
+============================================================
+
+related : 
+[]
+post : 
+-1
+None
+      Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/details/?post=-1&related=thread&related=forum&related=user HTTP/1.1" 200 -
+================Post CREATION
+
+Request : 
+{u'forum': u'forum3', u'parent': -1, u'isApproved': False, u'isDeleted': False, u'thread': -1, u'user': u'example@mail.ru', u'isEdited': True, u'date': u'2014-01-01 00:02:01', u'message': u'my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3', u'isSpam': False, u'isHighlighted': False}
+-1
+Thread : -1
+Message : my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3my message 3
+Date : 2014-01-01 00:02:01
+User : example@mail.ru
+Forum : forum3
+      option POST parameter parent : -1
+      option POST parameter isApproved : False
+      option POST parameter isHighlighted : False
+      option POST parameter isEdited : True
+      option POST parameter isSpam : False
+      option POST parameter isDeleted : False
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/post/create/ HTTP/1.1" 200 -
+===================POST DETAILS BEGIN=====================
+============================================================
+
+related : 
+[]
+post : 
+-1
+None
+      Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/details/?post=-1&related=thread&related=forum&related=user HTTP/1.1" 200 -
+================Post CREATION
+
+Request : 
+{u'forum': u'forum3', u'thread': -1, u'parent': -1, u'isApproved': False, u'isHighlighted': False, u'isEdited': True, u'date': u'2014-01-02 00:02:01', u'message': u'my message 1', u'isSpam': True, u'isDeleted': False, u'user': u'example@mail.ru'}
+-1
+Thread : -1
+Message : my message 1
+Date : 2014-01-02 00:02:01
+User : example@mail.ru
+Forum : forum3
+      option POST parameter parent : -1
+      option POST parameter isApproved : False
+      option POST parameter isHighlighted : False
+      option POST parameter isEdited : True
+      option POST parameter isSpam : True
+      option POST parameter isDeleted : False
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/post/create/ HTTP/1.1" 200 -
+===================POST DETAILS BEGIN=====================
+============================================================
+
+related : 
+[]
+post : 
+-1
+None
+      Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/details/?post=-1&related=thread&related=forum&related=user HTTP/1.1" 200 -
+================Post CREATION
+
+Request : 
+{u'forum': u'forum3', u'thread': -1, u'isApproved': True, u'isHighlighted': False, u'isEdited': False, u'date': u'2014-01-03 00:01:01', u'message': u'my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1', u'isSpam': False, u'isDeleted': False, u'user': u'example@mail.ru'}
+-1
+Thread : -1
+Message : my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1my message 1
+Date : 2014-01-03 00:01:01
+User : example@mail.ru
+Forum : forum3
+      option POST parameter parent : None
+      option POST parameter isApproved : True
+      option POST parameter isHighlighted : False
+      option POST parameter isEdited : False
+      option POST parameter isSpam : False
+      option POST parameter isDeleted : False
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/post/create/ HTTP/1.1" 200 -
+===================POST DETAILS BEGIN=====================
+============================================================
+
+related : 
+[]
+post : 
+-1
+None
+      Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/details/?post=-1&related=thread&related=forum&related=user HTTP/1.1" 200 -
+================Post CREATION
+
+Request : 
+{u'forum': u'forum3', u'thread': -1, u'isApproved': False, u'isHighlighted': False, u'isEdited': False, u'date': u'2014-01-03 00:08:01', u'message': u'my message 1', u'isSpam': False, u'isDeleted': False, u'user': u'example3@mail.ru'}
+-1
+Thread : -1
+Message : my message 1
+Date : 2014-01-03 00:08:01
+User : example3@mail.ru
+Forum : forum3
+      option POST parameter parent : None
+      option POST parameter isApproved : False
+      option POST parameter isHighlighted : False
+      option POST parameter isEdited : False
+      option POST parameter isSpam : False
+      option POST parameter isDeleted : False
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/post/create/ HTTP/1.1" 200 -
+===================POST DETAILS BEGIN=====================
+============================================================
+
+related : 
+[]
+post : 
+-1
+None
+      Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/details/?post=-1&related=thread&related=forum&related=user HTTP/1.1" 200 -
+===================POST DETAILS BEGIN=====================
+============================================================
+
+related : 
+[]
+post : 
+-42
+None
+      Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/details/?post=-42 HTTP/1.1" 200 -
+================USER CREATION
+richard.nixon@example.com is already exists
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/user/create/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[u'user', u'thread']
+      thread not in ['user', 'forum']
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?related=user&related=thread&thread=-1 HTTP/1.1" 200 -
+      option GET parameter limit : 2
+      option GET parameter order : asc
+      option GET parameter since : 2014-01-02 00:00:00
+  thread = None
+      GETTING LIST POSTS BY FORUM
+      Final SQL    listPosts : SELECT * FROM Post WHERE idForum = %s AND date >= %s ORDER BY date asc LIMIT %s
+      Final PARAMS listPosts : [None, u'2014-01-02 00:00:00', 2]
+      GETTED POSTS : 
+[]
+      ==============
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/list/?since=2014-01-02+00%3A00%3A00&limit=2&order=asc&forum=forumwithsufficientlylargename HTTP/1.1" 200 -
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-01 00:00:00
+  thread = None
+      GETTING LIST POSTS BY FORUM
+      Final SQL    listPosts : SELECT * FROM Post WHERE idForum = %s AND date >= %s ORDER BY date desc
+      Final PARAMS listPosts : [None, u'2014-01-01 00:00:00']
+      GETTED POSTS : 
+[]
+      ==============
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/list/?since=2014-01-01+00%3A00%3A00&order=desc&forum=forum1 HTTP/1.1" 200 -
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-01 00:00:00
+  thread = -1
+      GETTING LIST POSTS BY THREAD
+      Final SQL    listPosts : SELECT * FROM Post WHERE idThread = %s AND date >= %s ORDER BY date desc
+      Final PARAMS listPosts : [-1, u'2014-01-01 00:00:00']
+      GETTED POSTS : 
+[]
+      ==============
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/list/?since=2014-01-01+00%3A00%3A00&order=desc&thread=-1 HTTP/1.1" 200 -
+      option GET parameter limit : 3
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-03 00:00:00
+  thread = -1
+      GETTING LIST POSTS BY THREAD
+      Final SQL    listPosts : SELECT * FROM Post WHERE idThread = %s AND date >= %s ORDER BY date desc LIMIT %s
+      Final PARAMS listPosts : [-1, u'2014-01-03 00:00:00', 3]
+      GETTED POSTS : 
+[]
+      ==============
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/list/?since=2014-01-03+00%3A00%3A00&limit=3&order=desc&thread=-1 HTTP/1.1" 200 -
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/post/remove/ HTTP/1.1" 200 -
+===================POST DETAILS BEGIN=====================
+============================================================
+
+related : 
+[]
+post : 
+-1
+None
+      Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/details/?post=-1 HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/post/restore/ HTTP/1.1" 500 -
+===================POST DETAILS BEGIN=====================
+============================================================
+
+related : 
+[]
+post : 
+-1
+None
+      Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/details/?post=-1 HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+  Updating post
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/post/update/ HTTP/1.1" 500 -
+===================POST DETAILS BEGIN=====================
+============================================================
+
+related : 
+[]
+post : 
+-1
+None
+      Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/details/?post=-1 HTTP/1.1" 200 -
+================POST VOTE=====================
+  vote : 1;  post : -1
+None
+      Thread not found
+  Response: 
+{"code": 0, "response": null}
+================POST VOTE END=================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/post/vote/ HTTP/1.1" 200 -
+===================POST DETAILS BEGIN=====================
+============================================================
+
+related : 
+[]
+post : 
+-1
+None
+      Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/post/details/?post=-1 HTTP/1.1" 200 -
+=====================================THREAD LIST BEGIN============================================
+Forum : forumwithsufficientlylargename
+      option GET parameter limit : 2
+      option GET parameter order : asc
+      option GET parameter since : 2014-01-02 00:00:00
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/list/?since=2014-01-02+00%3A00%3A00&limit=2&order=asc&forum=forumwithsufficientlylargename HTTP/1.1" 500 -
+=====================================THREAD LIST BEGIN============================================
+Forum : forum1
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-01 00:00:00
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/list/?since=2014-01-01+00%3A00%3A00&order=desc&forum=forum1 HTTP/1.1" 500 -
+=====================================THREAD LIST BEGIN============================================
+User : example2@mail.ru
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-01 00:00:00
+      getting user by email : 
+      getted user by email : 3
+FINAL SQL    = SELECT * FROM Thread WHERE 1 = 1  AND idAuthor = %s AND DATE(date) >= %s ORDER BY date desc
+FINAL PARAMS = [3L, u'2014-01-01 00:00:00']
+Response : 
+{"code": 0, "response": []}
+=====================================THREAD LIST END============================================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/list/?since=2014-01-01+00%3A00%3A00&user=example2%40mail.ru&order=desc HTTP/1.1" 200 -
+=====================================THREAD LIST BEGIN============================================
+User : example3@mail.ru
+      option GET parameter limit : 3
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-03 00:00:00
+      getting user by email : 
+      getted user by email : 4
+FINAL SQL    = SELECT * FROM Thread WHERE 1 = 1  AND idAuthor = %s AND DATE(date) >= %s ORDER BY date desc LIMIT 3
+FINAL PARAMS = [4L, u'2014-01-03 00:00:00']
+Response : 
+{"code": 0, "response": []}
+=====================================THREAD LIST END============================================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/list/?since=2014-01-03+00%3A00%3A00&limit=3&user=example3%40mail.ru&order=desc HTTP/1.1" 200 -
+THREAD LIST POSTS===========================
+      option GET parameter limit : 2
+      option GET parameter order : asc
+      option GET parameter since : 2014-01-02 00:00:00
+      option GET parameter sort  : flat
+  thread  = -1
+  sort    = flat
+      GETTING LIST POSTS BY THREAD
+      Final SQL    listPosts : SELECT * FROM Post WHERE idThread = %s AND date >= %s ORDER BY date asc LIMIT %s
+      Final PARAMS listPosts : [-1, u'2014-01-02 00:00:00', 2]
+      GETTED POSTS : 
+[]
+      ==============
+  Response : 
+{"code": 0, "response": []}
+THREAD LIST POSTS SUCCESSFUL================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/listPosts/?since=2014-01-02+00%3A00%3A00&limit=2&order=asc&thread=-1 HTTP/1.1" 200 -
+THREAD LIST POSTS===========================
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-01 00:00:00
+      option GET parameter sort  : flat
+  thread  = -1
+  sort    = flat
+      GETTING LIST POSTS BY THREAD
+      Final SQL    listPosts : SELECT * FROM Post WHERE idThread = %s AND date >= %s ORDER BY date desc
+      Final PARAMS listPosts : [-1, u'2014-01-01 00:00:00']
+      GETTED POSTS : 
+[]
+      ==============
+  Response : 
+{"code": 0, "response": []}
+THREAD LIST POSTS SUCCESSFUL================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/listPosts/?since=2014-01-01+00%3A00%3A00&order=desc&thread=-1 HTTP/1.1" 200 -
+THREAD LIST POSTS===========================
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-01 00:00:00
+      option GET parameter sort  : flat
+  thread  = -1
+  sort    = flat
+      GETTING LIST POSTS BY THREAD
+      Final SQL    listPosts : SELECT * FROM Post WHERE idThread = %s AND date >= %s ORDER BY date desc
+      Final PARAMS listPosts : [-1, u'2014-01-01 00:00:00']
+      GETTED POSTS : 
+[]
+      ==============
+  Response : 
+{"code": 0, "response": []}
+THREAD LIST POSTS SUCCESSFUL================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/listPosts/?since=2014-01-01+00%3A00%3A00&order=desc&thread=-1 HTTP/1.1" 200 -
+THREAD LIST POSTS===========================
+      option GET parameter limit : 3
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-03 00:00:00
+      option GET parameter sort  : flat
+  thread  = -1
+  sort    = flat
+      GETTING LIST POSTS BY THREAD
+      Final SQL    listPosts : SELECT * FROM Post WHERE idThread = %s AND date >= %s ORDER BY date desc LIMIT %s
+      Final PARAMS listPosts : [-1, u'2014-01-03 00:00:00', 3]
+      GETTED POSTS : 
+[]
+      ==============
+  Response : 
+{"code": 0, "response": []}
+THREAD LIST POSTS SUCCESSFUL================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/listPosts/?since=2014-01-03+00%3A00%3A00&limit=3&order=desc&thread=-1 HTTP/1.1" 200 -
+REMOVING THREAD
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/remove/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+THREAD LIST POSTS===========================
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : None
+      option GET parameter sort  : flat
+  thread  = -1
+  sort    = flat
+      GETTING LIST POSTS BY THREAD
+      Final SQL    listPosts : SELECT * FROM Post WHERE idThread = %s ORDER BY date desc
+      Final PARAMS listPosts : [-1]
+      GETTED POSTS : 
+[]
+      ==============
+  Response : 
+{"code": 0, "response": []}
+THREAD LIST POSTS SUCCESSFUL================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/listPosts/?order=desc&thread=-1 HTTP/1.1" 200 -
+RESTORING THREAD
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/restore/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+THREAD LIST POSTS===========================
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : None
+      option GET parameter sort  : flat
+  thread  = -1
+  sort    = flat
+      GETTING LIST POSTS BY THREAD
+      Final SQL    listPosts : SELECT * FROM Post WHERE idThread = %s ORDER BY date desc
+      Final PARAMS listPosts : [-1]
+      GETTED POSTS : 
+[]
+      ==============
+  Response : 
+{"code": 0, "response": []}
+THREAD LIST POSTS SUCCESSFUL================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/listPosts/?order=desc&thread=-1 HTTP/1.1" 200 -
+=====================================CLOSING THREAD BEGIN==========================================
+  thread : -1
+=====================================CLOSING THREAD END WITHOUT DATA===============================
+
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/close/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+  thread : -1
+=====================================CLOSING THREAD END WITHOUT DATA===============================
+
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/open/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+=======================UPDATE THREAD==========================
+Thread not found
+=======================UPDATE THREAD SUCCESS==================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/update/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+================THREAD VOTE=====================
+  vote : 1;  thread : -1
+Thread not found
+  Response: 
+{"code": 0, "response": null}
+================THREAD VOTE END=================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/vote/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+=======================SUBSCRIBE THREAD======================
+      getting user by email : 
+      getted user by email : 4
+  User : 4; idThread : -1
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/subscribe/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+=======================SUBSCRIBE THREAD======================
+      getting user by email : 
+      getted user by email : 4
+  User : 4; idThread : -1
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/subscribe/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+=======================SUBSCRIBE THREAD======================
+      getting user by email : 
+      getted user by email : 2
+  User : 2; idThread : -1
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/subscribe/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+=======================SUBSCRIBE THREAD======================
+      getting user by email : 
+      getted user by email : 4
+  User : 4; idThread : -1
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/subscribe/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+=======================SUBSCRIBE THREAD======================
+      getting user by email : 
+      getted user by email : 4
+  User : 4; idThread : -1
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/subscribe/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+=====================UNSUBSCRIBE THREAD======================
+      getting user by email : 
+      getted user by email : 4
+  User : 4; idThread : -1
+  Result : {"code": 0, "response": {"user": "example3@mail.ru", "thread": -1}}
+=====================UNSUBSCRIBE THREAD SUCCESS======================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/thread/unsubscribe/ HTTP/1.1" 200 -
+===================THREAD DETAILS BEGIN=====================
+==========================================================
+  related : 
+[]
+Thread not found
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/thread/details/?thread=-1 HTTP/1.1" 200 -
+================USER LISTPOSTS================
+      option GET parameter limit : 2
+      option GET parameter order : asc
+      option GET parameter since : 2014-01-02 00:00:00
+      getting user by email : 
+      getted user by email : 1
+  Final SQL    listPosts : SELECT P.* FROM Post P INNER JOIN User U ON P.idAuthor = U.idUser WHERE U.idUser = %s AND P.date >= %s ORDER BY P.date asc LIMIT %s
+  Final PARAMS listPosts : [1L, u'2014-01-02 00:00:00', 2]
+  Results : 
+  Response : {"code": 0, "response": []}
+================USER LISTPOSTS END============
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/listPosts/?since=2014-01-02+00%3A00%3A00&limit=2&user=example%40mail.ru&order=asc HTTP/1.1" 200 -
+================USER LISTPOSTS================
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-01 00:00:00
+      getting user by email : 
+      getted user by email : 2
+  Final SQL    listPosts : SELECT P.* FROM Post P INNER JOIN User U ON P.idAuthor = U.idUser WHERE U.idUser = %s AND P.date >= %s ORDER BY P.date desc
+  Final PARAMS listPosts : [2L, u'2014-01-01 00:00:00']
+  Results : 
+  Response : {"code": 0, "response": []}
+================USER LISTPOSTS END============
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/listPosts/?since=2014-01-01+00%3A00%3A00&user=richard.nixon%40example.com&order=desc HTTP/1.1" 200 -
+================USER LISTPOSTS================
+      option GET parameter limit : None
+      option GET parameter order : asc
+      option GET parameter since : 2014-01-01 00:00:00
+      getting user by email : 
+      getted user by email : 3
+  Final SQL    listPosts : SELECT P.* FROM Post P INNER JOIN User U ON P.idAuthor = U.idUser WHERE U.idUser = %s AND P.date >= %s ORDER BY P.date asc
+  Final PARAMS listPosts : [3L, u'2014-01-01 00:00:00']
+  Results : 
+  Response : {"code": 0, "response": []}
+================USER LISTPOSTS END============
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/listPosts/?since=2014-01-01+00%3A00%3A00&user=example2%40mail.ru&order=asc HTTP/1.1" 200 -
+================USER LISTPOSTS================
+      option GET parameter limit : 3
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-03 00:00:00
+      getting user by email : 
+      getted user by email : 4
+  Final SQL    listPosts : SELECT P.* FROM Post P INNER JOIN User U ON P.idAuthor = U.idUser WHERE U.idUser = %s AND P.date >= %s ORDER BY P.date desc LIMIT %s
+  Final PARAMS listPosts : [4L, u'2014-01-03 00:00:00', 3]
+  Results : 
+  Response : {"code": 0, "response": []}
+================USER LISTPOSTS END============
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/listPosts/?since=2014-01-03+00%3A00%3A00&limit=3&user=example3%40mail.ru&order=desc HTTP/1.1" 200 -
+=======================UPDATING PROFILE========================
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [3L]
+      EMAILS FOLLOWERS OF USER (3) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [3L]
+      EMAILS FOLLOWING OF USER (3) : []
+      Subscriptions of USER (3) : []
+  Result : {"code": 0, "response": {"username": "user2", "about": "Wowowowow", "name": "NewName", "subscriptions": [], "email": "example2@mail.ru", "followers": [], "following": [], "isAnonymous": 0, "id": 3}}
+=======================UPDATING PROFILE SUCCESSFUL=============
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/user/updateProfile/ HTTP/1.1" 200 -
+example2@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [3L]
+      EMAILS FOLLOWERS OF USER (3) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [3L]
+      EMAILS FOLLOWING OF USER (3) : []
+      Subscriptions of USER (3) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=example2%40mail.ru HTTP/1.1" 200 -
+=======================UPDATING PROFILE========================
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : []
+      Subscriptions of USER (4) : []
+  Result : {"code": 0, "response": {"username": "user3", "about": "Wowowowow!!!", "name": "NewName2", "subscriptions": [], "email": "example3@mail.ru", "followers": [], "following": [], "isAnonymous": 0, "id": 4}}
+=======================UPDATING PROFILE SUCCESSFUL=============
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/user/updateProfile/ HTTP/1.1" 200 -
+example3@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : []
+      Subscriptions of USER (4) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=example3%40mail.ru HTTP/1.1" 200 -
+================USER FOLLOW========================
+      getting user by email : 
+      getted user by email : 4
+      getting user by email : 
+      getted user by email : 1
+  follower : 4
+  followee : 1
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : [u'example@mail.ru']
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : [u'example@mail.ru']
+      Subscriptions of USER (4) : []
+Response : 
+{'username': u'user3', 'about': u'Wowowowow!!!', 'name': u'NewName2', 'subscriptions': [], 'email': u'example3@mail.ru', 'followers': [], 'following': [u'example@mail.ru'], 'isAnonymous': 0, 'id': 4L}
+================USER FOLLOW SUCCESS================
+
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/user/follow/ HTTP/1.1" 200 -
+example3@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : [u'example@mail.ru']
+      Subscriptions of USER (4) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=example3%40mail.ru HTTP/1.1" 200 -
+example@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [1L]
+      EMAILS FOLLOWERS OF USER (1) : [u'example3@mail.ru']
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [1L]
+      EMAILS FOLLOWING OF USER (1) : []
+      Subscriptions of USER (1) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=example%40mail.ru HTTP/1.1" 200 -
+================USER FOLLOW========================
+      getting user by email : 
+      getted user by email : 1
+      getting user by email : 
+      getted user by email : 4
+  follower : 1
+  followee : 4
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [1L]
+      EMAILS FOLLOWERS OF USER (1) : [u'example3@mail.ru']
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [1L]
+      EMAILS FOLLOWING OF USER (1) : [u'example3@mail.ru']
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [1L]
+      EMAILS FOLLOWERS OF USER (1) : [u'example3@mail.ru']
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [1L]
+      EMAILS FOLLOWING OF USER (1) : [u'example3@mail.ru']
+      Subscriptions of USER (1) : []
+Response : 
+{'username': u'user1', 'about': u'hello im user1', 'name': u'John', 'subscriptions': [], 'email': u'example@mail.ru', 'followers': [u'example3@mail.ru'], 'following': [u'example3@mail.ru'], 'isAnonymous': 0, 'id': 1L}
+================USER FOLLOW SUCCESS================
+
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/user/follow/ HTTP/1.1" 200 -
+example@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [1L]
+      EMAILS FOLLOWERS OF USER (1) : [u'example3@mail.ru']
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [1L]
+      EMAILS FOLLOWING OF USER (1) : [u'example3@mail.ru']
+      Subscriptions of USER (1) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=example%40mail.ru HTTP/1.1" 200 -
+example3@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : [u'example@mail.ru']
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : [u'example@mail.ru']
+      Subscriptions of USER (4) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=example3%40mail.ru HTTP/1.1" 200 -
+================USER listFollowers========================
+      option GET parameter limit : 3
+      option GET parameter order : desc
+      option GET parameter since_id : 0
+user : example3@mail.ru
+      getting user by email : 
+      getted user by email : 4
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s AND U.idUser > %s ORDER BY U.username desc LIMIT %s
+      Final PARAMS followerEmails : [4L, 0, 3]
+      EMAILS FOLLOWERS OF USER (4) : [u'example@mail.ru']
+
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [1L]
+      EMAILS FOLLOWERS OF USER (1) : [u'example3@mail.ru']
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [1L]
+      EMAILS FOLLOWING OF USER (1) : [u'example3@mail.ru']
+      Subscriptions of USER (1) : []
+Response : 
+{"code": 0, "response": [{"username": "user1", "about": "hello im user1", "name": "John", "subscriptions": [], "email": "example@mail.ru", "followers": ["example3@mail.ru"], "following": ["example3@mail.ru"], "isAnonymous": 0, "id": 1}]}
+================USER listFollowers END====================
+
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/listFollowers/?limit=3&user=example3%40mail.ru&since_id=0&order=desc HTTP/1.1" 200 -
+================USER listFollowers========================
+      option GET parameter limit : None
+      option GET parameter order : asc
+      option GET parameter since_id : None
+user : example@mail.ru
+      getting user by email : 
+      getted user by email : 1
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username asc
+      Final PARAMS followerEmails : [1L]
+      EMAILS FOLLOWERS OF USER (1) : [u'example3@mail.ru']
+
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : [u'example@mail.ru']
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : [u'example@mail.ru']
+      Subscriptions of USER (4) : []
+Response : 
+{"code": 0, "response": [{"username": "user3", "about": "Wowowowow!!!", "name": "NewName2", "subscriptions": [], "email": "example3@mail.ru", "followers": ["example@mail.ru"], "following": ["example@mail.ru"], "isAnonymous": 0, "id": 4}]}
+================USER listFollowers END====================
+
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/listFollowers/?user=example%40mail.ru&order=asc HTTP/1.1" 200 -
+================USER listFollowing========================
+      option GET parameter limit : 3
+      option GET parameter order : desc
+      option GET parameter since_id : 1
+  User : example3@mail.ru
+      getting user by email : 
+      getted user by email : 4
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s AND U.idUser > %s ORDER BY U.username desc LIMIT %s
+      Final PARAMS followingEmails : [4L, 1, 3]
+      EMAILS FOLLOWING OF USER (4) : []
+Response : 
+{"code": 0, "response": []}
+================USER listFollowing END====================
+
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/listFollowing/?limit=3&user=example3%40mail.ru&since_id=1&order=desc HTTP/1.1" 200 -
+================USER listFollowing========================
+      option GET parameter limit : None
+      option GET parameter order : asc
+      option GET parameter since_id : None
+  User : example@mail.ru
+      getting user by email : 
+      getted user by email : 1
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username asc
+      Final PARAMS followingEmails : [1L]
+      EMAILS FOLLOWING OF USER (1) : [u'example3@mail.ru']
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : [u'example@mail.ru']
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : [u'example@mail.ru']
+      Subscriptions of USER (4) : []
+Response : 
+{"code": 0, "response": [{"username": "user3", "about": "Wowowowow!!!", "name": "NewName2", "subscriptions": [], "email": "example3@mail.ru", "followers": ["example@mail.ru"], "following": ["example@mail.ru"], "isAnonymous": 0, "id": 4}]}
+================USER listFollowing END====================
+
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/listFollowing/?user=example%40mail.ru&order=asc HTTP/1.1" 200 -
+================USER UNFOLLOW========================
+      getting user by email : 
+      getted user by email : 4
+      getting user by email : 
+      getted user by email : 1
+  follower : 4
+  followee : 1
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : [u'example@mail.ru']
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : []
+      Subscriptions of USER (4) : []
+================USER UNFOLLOW END====================
+127.0.0.1 - - [01/Dec/2015 12:29:12] "POST /db/api/user/unfollow/ HTTP/1.1" 200 -
+example3@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : [u'example@mail.ru']
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : []
+      Subscriptions of USER (4) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=example3%40mail.ru HTTP/1.1" 200 -
+example@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [1L]
+      EMAILS FOLLOWERS OF USER (1) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [1L]
+      EMAILS FOLLOWING OF USER (1) : [u'example3@mail.ru']
+      Subscriptions of USER (1) : []
+127.0.0.1 - - [01/Dec/2015 12:29:12] "GET /db/api/user/details/?user=example%40mail.ru HTTP/1.1" 200 -
+================USER UNFOLLOW========================
+      getting user by email : 
+      getted user by email : 1
+      getting user by email : 
+      getted user by email : 4
+  follower : 1
+  followee : 4
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [1L]
+      EMAILS FOLLOWERS OF USER (1) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [1L]
+      EMAILS FOLLOWING OF USER (1) : []
+      Subscriptions of USER (1) : []
+================USER UNFOLLOW END====================
+127.0.0.1 - - [01/Dec/2015 12:29:13] "POST /db/api/user/unfollow/ HTTP/1.1" 200 -
+example@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [1L]
+      EMAILS FOLLOWERS OF USER (1) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [1L]
+      EMAILS FOLLOWING OF USER (1) : []
+      Subscriptions of USER (1) : []
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/user/details/?user=example%40mail.ru HTTP/1.1" 200 -
+example3@mail.ru
+
+      Final SQL    followerEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollower = U.idUser WHERE F.idFollowing = %s ORDER BY U.username desc
+      Final PARAMS followerEmails : [4L]
+      EMAILS FOLLOWERS OF USER (4) : []
+
+      Final SQL    followingEmails : SELECT U.email FROM Follower F INNER JOIN User U ON F.idFollowing = U.idUser WHERE F.idFollower = %s ORDER BY U.username desc
+      Final PARAMS followingEmails : [4L]
+      EMAILS FOLLOWING OF USER (4) : []
+      Subscriptions of USER (4) : []
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/user/details/?user=example3%40mail.ru HTTP/1.1" 200 -
+FORUM LIST POSTS===========================
+      option GET parameter limit : 2
+      option GET parameter order : asc
+      option GET parameter since : 2014-01-02 00:00:00
+  forum   = forumwithsufficientlylargename
+  related = [u'thread']
+      GETTING LIST POSTS BY FORUM
+      Final SQL    listPosts : SELECT * FROM Post WHERE idForum = %s AND date >= %s ORDER BY date asc LIMIT %s
+      Final PARAMS listPosts : [None, u'2014-01-02 00:00:00', 2]
+      GETTED POSTS : 
+[]
+      ==============
+  Response : 
+{"code": 0, "response": []}
+FORUM LIST POSTS SUCCESSFUL================
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/forum/listPosts/?related=thread&since=2014-01-02+00%3A00%3A00&limit=2&order=asc&forum=forumwithsufficientlylargename HTTP/1.1" 200 -
+FORUM LIST POSTS===========================
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-01 00:00:00
+  forum   = forum1
+  related = [u'thread', u'forum']
+      GETTING LIST POSTS BY FORUM
+      Final SQL    listPosts : SELECT * FROM Post WHERE idForum = %s AND date >= %s ORDER BY date desc
+      Final PARAMS listPosts : [None, u'2014-01-01 00:00:00']
+      GETTED POSTS : 
+[]
+      ==============
+  Response : 
+{"code": 0, "response": []}
+FORUM LIST POSTS SUCCESSFUL================
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/forum/listPosts/?related=thread&related=forum&since=2014-01-01+00%3A00%3A00&order=desc&forum=forum1 HTTP/1.1" 200 -
+FORUM LIST POSTS===========================
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-01 00:00:00
+  forum   = forum2
+  related = []
+      GETTING LIST POSTS BY FORUM
+      Final SQL    listPosts : SELECT * FROM Post WHERE idForum = %s AND date >= %s ORDER BY date desc
+      Final PARAMS listPosts : [None, u'2014-01-01 00:00:00']
+      GETTED POSTS : 
+[]
+      ==============
+  Response : 
+{"code": 0, "response": []}
+FORUM LIST POSTS SUCCESSFUL================
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/forum/listPosts/?since=2014-01-01+00%3A00%3A00&order=desc&forum=forum2 HTTP/1.1" 200 -
+FORUM LIST POSTS===========================
+      option GET parameter limit : 3
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-03 00:00:00
+  forum   = forum3
+  related = []
+      GETTING LIST POSTS BY FORUM
+      Final SQL    listPosts : SELECT * FROM Post WHERE idForum = %s AND date >= %s ORDER BY date desc LIMIT %s
+      Final PARAMS listPosts : [None, u'2014-01-03 00:00:00', 3]
+      GETTED POSTS : 
+[]
+      ==============
+  Response : 
+{"code": 0, "response": []}
+FORUM LIST POSTS SUCCESSFUL================
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/forum/listPosts/?since=2014-01-03+00%3A00%3A00&limit=3&order=desc&forum=forum3 HTTP/1.1" 200 -
+FORUM LIST THREADS===========================
+      option GET parameter limit : 2
+      option GET parameter order : asc
+      option GET parameter since : 2013-12-30 00:00:00
+  forum   = forumwithsufficientlylargename
+  related = [u'forum', u'user']
+      Final SQL    listThreads : SELECT * FROM Thread WHERE idForum = %s AND date >= %s ORDER BY date asc LIMIT %s
+      Final PARAMS listThreads : [None, u'2013-12-30 00:00:00', 2]
+  Response : 
+{"code": 0, "response": []}
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/forum/listThreads/?related=forum&related=user&since=2013-12-30+00%3A00%3A00&limit=2&order=asc&forum=forumwithsufficientlylargename HTTP/1.1" 200 -
+FORUM LIST THREADS===========================
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : 2013-12-31 00:00:00
+  forum   = forum1
+  related = [u'forum']
+      Final SQL    listThreads : SELECT * FROM Thread WHERE idForum = %s AND date >= %s ORDER BY date desc
+      Final PARAMS listThreads : [None, u'2013-12-31 00:00:00']
+  Response : 
+{"code": 0, "response": []}
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/forum/listThreads/?related=forum&since=2013-12-31+00%3A00%3A00&order=desc&forum=forum1 HTTP/1.1" 200 -
+FORUM LIST THREADS===========================
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : 2014-01-01 00:00:00
+  forum   = forum2
+  related = [u'user']
+      Final SQL    listThreads : SELECT * FROM Thread WHERE idForum = %s AND date >= %s ORDER BY date desc
+      Final PARAMS listThreads : [None, u'2014-01-01 00:00:00']
+  Response : 
+{"code": 0, "response": []}
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/forum/listThreads/?related=user&since=2014-01-01+00%3A00%3A00&order=desc&forum=forum2 HTTP/1.1" 200 -
+FORUM LIST THREADS===========================
+      option GET parameter limit : 3
+      option GET parameter order : desc
+      option GET parameter since : 2013-12-29 00:00:00
+  forum   = forum3
+  related = []
+      Final SQL    listThreads : SELECT * FROM Thread WHERE idForum = %s AND date >= %s ORDER BY date desc LIMIT %s
+      Final PARAMS listThreads : [None, u'2013-12-29 00:00:00', 3]
+  Response : 
+{"code": 0, "response": []}
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/forum/listThreads/?since=2013-12-29+00%3A00%3A00&limit=3&order=desc&forum=forum3 HTTP/1.1" 200 -
+FORUM LIST USERS===========================
+      option GET parameter limit : 2
+      option GET parameter order : asc
+      option GET parameter since : None
+      order = asc
+      Final SQL    followerEmails : SELECT DISTINCT U.* FROM User U INNER JOIN Post P ON U.idUser = P.idAuthor WHERE P.idForum = %s ORDER BY U.name asc LIMIT %s
+      Final PARAMS followerEmails : [None, 2]
+      LIST USERES OF FORUM (None) : []
+  Response : 
+{"code": 0, "response": []}
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/forum/listUsers/?limit=2&since_id=2&forum=forumwithsufficientlylargename&order=asc HTTP/1.1" 200 -
+FORUM LIST USERS===========================
+      option GET parameter limit : None
+      option GET parameter order : desc
+      option GET parameter since : None
+      order = desc
+      Final SQL    followerEmails : SELECT DISTINCT U.* FROM User U INNER JOIN Post P ON U.idUser = P.idAuthor WHERE P.idForum = %s ORDER BY U.name desc
+      Final PARAMS followerEmails : [None]
+      LIST USERES OF FORUM (None) : []
+  Response : 
+{"code": 0, "response": []}
+127.0.0.1 - - [01/Dec/2015 12:29:13] "GET /db/api/forum/listUsers/?order=desc&forum=forum1 HTTP/1.1" 200 -
