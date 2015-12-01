@@ -140,7 +140,7 @@ def threadsList():
         params.append(idAuthor)
     if forum:
         sql = sql + " AND idForum = %s"
-        idForum = getForumDetailsByShortName(forum)["id"] #TODO funciton get ID by shortname
+        idForum = getForumIdByShortName(forum)
         params.append(idForum)
     if since:
         sql = sql + " AND DATE(date) >= %s" #TODO optimizate date query

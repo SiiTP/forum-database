@@ -23,7 +23,7 @@ def createForum():
         logging.info("error in parsing params")
         return json.dumps({"code": 2, "response": error_messages[2]})
 
-    cursor.execute("SELECT idUser FROM User WHERE User.email = %s", user)
+    cursor.execute("SELECT idUser FROM User WHERE User.email = %s", [user])
     id_User = cursor.fetchone()
     if (not id_User):
         return json.dumps({"code": 1, "response": error_messages[1]})
