@@ -152,8 +152,8 @@ def restorePost():
 
     sql = "SELECT idPost FROM Post WHERE idPost = %s"
     cursor.execute(sql, [post])
-    result = cursor.fetchone()[0]
-
+    result_arr = cursor.fetchone()
+    result = result_arr[0]
     if not result:
         return json.dumps({"code": 1, "response": error_messages[1]})
 
@@ -174,7 +174,8 @@ def updatePost():
 
     sql = "SELECT idPost FROM Post WHERE idPost = %s"
     cursor.execute(sql, [post])
-    result = cursor.fetchone()[0]
+    result_arr = cursor.fetchone()
+    result = result_arr[0]
     if not result:
         return json.dumps({"code": 1, "response": error_messages[1]})
 
