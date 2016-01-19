@@ -4,7 +4,7 @@ from flask import request
 import logging
 f = open("myLog.log", "w")
 f.close()
-logging.basicConfig(filename='myLog.log', level=logging.DEBUG, format='%(message)s')
+logging.basicConfig(filename='myLog.log', level=logging.ERROR, format='%(message)s')
 
 #сообщения к кодам ответов (код сообщения равен индексу в массиве)
 error_messages = ["OK",
@@ -29,7 +29,6 @@ def getOptionalGetParameterOrDefault(args, param, default):
         data = default
     if data is None:
         data = default
-    logging.info("      option GET parameter " + str(param) + " : " + str(data))
     return data
 #POST
 def getOptionalParameterOrDefault(json, param, default):
@@ -37,7 +36,6 @@ def getOptionalParameterOrDefault(json, param, default):
         data = json[param]
     else:
         data = default
-    logging.info("      option POST parameter " + str(param) + " : " + str(data))
     return data
 
 def entryRelatedInRightValues(related, right):

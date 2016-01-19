@@ -1,73 +1,72 @@
-from app import app, cursor
+# -*- coding: utf-8 -*-
+from app import app, cursor, conn
 from functions import *
 from User import *
 from Forum import *
 from Thread import *
 from flask import request
 import json
+import time
 
 @app.route("/db/api/post/create/", methods = ['POST'])
 def createPost():
-    logging.info("================Post CREATION\n")
-    logging.info("Request : ")
-    logging.info(request.json)
-    logging.info(request.json["thread"])
+    # millis = int(round(time.time() * 1000))
+    # logging.info("start : " + str(millis))
     try:
-        thread = request.json["thread"]
-        message = request.json["message"]
-        date = request.json["date"]
-        user = request.json["user"]
-        forum = request.json["forum"]
-        logging.info("Thread : " + str(thread))
-        logging.info("Message : " + message)
-        logging.info("Date : " + str(date))
-        logging.info("User : " + str(user))
-        logging.info("Forum : " + str(forum))
+        try:
+            thread = request.json["thread"]
+            message = request.json["message"]
+            date = request.json["date"]
+            user = request.json["user"]
+            forum = request.json["forum"]
+        except:
+            return json.dumps({"code": 2, "response": error_messages[2]})
 
+        parent        = getOptionalParameterOrDefault(request.json, "parent", None)
+        isApproved    = getOptionalParameterOrDefault(request.json, "isApproved", False)
+        isHighlighted = getOptionalParameterOrDefault(request.json, "isHighlighted", False)
+        isEdited      = getOptionalParameterOrDefault(request.json, "isEdited", False)
+        isSpam        = getOptionalParameterOrDefault(request.json, "isSpam", False)
+        isDeleted     = getOptionalParameterOrDefault(request.json, "isDeleted", False)
+
+        id_Forum = getForumIdByShortName(forum)
+        id_User = getUserIdByEmail(user)
+        if id_Forum is None or id_User is None or thread is None:
+            return json.dumps({"code": 2, "response": error_messages[2]})
+
+        sql = "INSERT INTO Post(parent, isApproved, isHighlighted, isEdited, isSpam, isDeleted, likes, dislikes, date, message, idForum, idThread, idAuthor) " \
+              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        cursor.execute(sql,    [parent, isApproved, isHighlighted, isEdited, isSpam, isDeleted,     0,        0, date, message, id_Forum,  thread, id_User])
+        conn.commit()
+
+        sql = "SELECT MAX(idPost) FROM Post"
+        cursor.execute(sql)
+        idP = cursor.fetchone()[0]
+
+        answer = {}
+        answer["id"] = idP
+        answer["parent"] = parent
+        answer["isApproved"] = isApproved
+        answer["isHighlighted"] = isHighlighted
+        answer["isEdited"] = isEdited
+        answer["isSpam"] = isSpam
+        answer["isDeleted"] = isDeleted
+        answer["likes"] = 0
+        answer["dislikes"] = 0
+        answer["points"] = answer["likes"] - answer["dislikes"]
+        answer["date"] = date
+        answer["message"] = message
+        answer["forum"] = forum
+        answer["thread"] = thread
+        answer["user"] = user
+        response = json.dumps({"code": 0, "response": answer})
+        millis = int(round(time.time() * 1000))
+        # logging.info("end   : " + str(millis))
+        # logging.info(response)
+        return response
     except:
         return json.dumps({"code": 2, "response": error_messages[2]})
 
-    parent        = getOptionalParameterOrDefault(request.json, "parent", None)
-    isApproved    = getOptionalParameterOrDefault(request.json, "isApproved", False)
-    isHighlighted = getOptionalParameterOrDefault(request.json, "isHighlighted", False)
-    isEdited      = getOptionalParameterOrDefault(request.json, "isEdited", False)
-    isSpam        = getOptionalParameterOrDefault(request.json, "isSpam", False)
-    isDeleted     = getOptionalParameterOrDefault(request.json, "isDeleted", False)
-
-    try:
-        id_Forum = getForumDetailsByShortName(forum)["id"]
-        id_User = getUserInfoByEmail(user)["id"]
-    except:
-        return json.dumps({"code": 2, "response": error_messages[2]})
-
-    sql = "INSERT INTO Post(parent, isApproved, isHighlighted, isEdited, isSpam, isDeleted, likes, dislikes, date, message, idForum, idThread, idAuthor) " \
-          "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    cursor.execute(sql,    [parent, isApproved, isHighlighted, isEdited, isSpam, isDeleted,     0,        0, date, message, id_Forum,  thread, id_User])
-
-    sql = "SELECT MAX(idPost) FROM Post"
-    cursor.execute(sql)
-    idP = cursor.fetchone()[0]
-
-    answer = {}
-    answer["id"] = idP
-    answer["parent"] = parent
-    answer["isApproved"] = isApproved
-    answer["isHighlighted"] = isHighlighted
-    answer["isEdited"] = isEdited
-    answer["isSpam"] = isSpam
-    answer["isDeleted"] = isDeleted
-    answer["likes"] = 0
-    answer["dislikes"] = 0
-    answer["points"] = answer["likes"] - answer["dislikes"]
-    answer["date"] = date
-    answer["message"] = message
-    answer["forum"] = forum
-    answer["thread"] = thread
-    answer["user"] = user
-    response = json.dumps({"code": 0, "response": answer})
-    logging.info("  Response : " + response)
-    logging.info("================SUCCESSFUL Post CREATION\n")
-    return response
 
 @app.route("/db/api/post/details/", methods = ['GET'])
 def postDetails():
@@ -120,6 +119,9 @@ def postsList():
     if forum is not None:
         answer = getListPostsOfForum(forum, since, order, limit, [])
 
+    # if not answer:
+    #     print("empty 7")
+    #     return json.dumps({"code": 1, "response": error_messages[2]})
 
     response = json.dumps({"code": 0, "response": answer})
     return response
@@ -139,6 +141,7 @@ def removePost():
 
     sql = "UPDATE Post SET isDeleted = 1 WHERE idPost = %s"
     cursor.execute(sql, [post])
+    conn.commit()
 
     response = json.dumps({"code": 0, "response": post})
     return response
@@ -153,12 +156,13 @@ def restorePost():
     sql = "SELECT idPost FROM Post WHERE idPost = %s"
     cursor.execute(sql, [post])
     result_arr = cursor.fetchone()
-    result = result_arr[0]
-    if not result:
+    if not result_arr:
         return json.dumps({"code": 1, "response": error_messages[1]})
 
     sql = "UPDATE Post SET isDeleted = 0 WHERE idPost = %s"
     cursor.execute(sql, [post])
+    conn.commit()
+
 
     response = json.dumps({"code": 0, "response": post})
     return response
@@ -175,12 +179,13 @@ def updatePost():
     sql = "SELECT idPost FROM Post WHERE idPost = %s"
     cursor.execute(sql, [post])
     result_arr = cursor.fetchone()
-    result = result_arr[0]
-    if not result:
+    if not result_arr:
         return json.dumps({"code": 1, "response": error_messages[1]})
 
     sql = "UPDATE Post SET message = %s WHERE idPost = %s"
     cursor.execute(sql, [message, post])
+    conn.commit()
+
     response = json.dumps({"code": 0, "response": post})
     logging.info("  Post " + str(post) + (" is updated successfully\n"))
     return response
@@ -207,6 +212,7 @@ def votePost():
 
     sql = "UPDATE Post SET" + addition + " WHERE idPost = %s"
     cursor.execute(sql, [post])
+    conn.commit()
 
     answer = getPostDetailsByID(post, [])
 
@@ -345,8 +351,10 @@ def removePostsOfThread(thread):
     logging.info("      removing posts")
     sql = "UPDATE Post SET isDeleted = 1 WHERE idThread = %s"
     cursor.execute(sql, [thread])
+    conn.commit()
 
 def restorePostsOfThread(thread):
     logging.info("      restoring posts")
     sql = "UPDATE Post SET isDeleted = 0 WHERE idThread = %s"
     cursor.execute(sql, [thread])
+    conn.commit()

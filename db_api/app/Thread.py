@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from app import app, cursor
+from app import app, cursor, conn
 from functions import *
 from User import *
 from Forum import *
@@ -9,7 +9,6 @@ import json
 
 @app.route("/db/api/thread/create/", methods = ['POST'])
 def createThread():
-    logging.info("================Thread CREATION")
     try:
         forum = request.json["forum"]
         title = request.json["title"]
@@ -34,11 +33,14 @@ def createThread():
 
     sql = "INSERT INTO Thread(title, message, slug, date, isClosed, isDeleted, idForum, idAuthor, likes, dislikes) " \
           "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+
     cursor.execute(sql,      [title, message, slug, date, isClosed, isDeleted, id_Forum, id_User, 0    , 0])
+    conn.commit()
 
     sql = "SELECT MAX(idThread) FROM Thread"
     cursor.execute(sql)
     idTh = cursor.fetchone()[0]
+
 
     answer = {}
     answer["date"] = date
@@ -55,8 +57,6 @@ def createThread():
     answer["title"] = title
     answer["user"] = user
     response = json.dumps({"code": 0, "response": answer })
-    logging.info("  Answer : " + response)
-    logging.info("================SUCCESSFUL THREAD CREATION\n")
     return response
     
 @app.route("/db/api/thread/close/", methods = ['POST'])
@@ -77,6 +77,7 @@ def closeThread():
 
     sql = "UPDATE Thread SET isClosed = 1 WHERE idThread = %s"
     cursor.execute(sql, [thread])
+    conn.commit()
 
     response = json.dumps({"code": 0, "response": thread})
     logging.info("  Response : ")
@@ -156,6 +157,7 @@ def threadsList():
     answer = []
     for item in data:
         answer.append(getThreadDetailsByID(item[0], []))
+
     response = json.dumps({"code": 0, "response": answer})
     logging.info("Response : ")
     logging.info(response)
@@ -182,6 +184,10 @@ def threadListPosts():
 
     answer = getListPostsOfThread(thread, since, order, limit)
 
+    # if not answer:
+    #     print("empty 8")
+    #     return json.dumps({"code": 1, "response": error_messages[2]})
+
     response = json.dumps({"code": 0, "response": answer})
     logging.info("  Response : ")
     logging.info(response)
@@ -206,6 +212,7 @@ def openThread():
 
     sql = "UPDATE Thread SET isClosed = 0 WHERE idThread = %s"
     cursor.execute(sql, [thread])
+    conn.commit()
 
     response = json.dumps({"code": 0, "response": thread})
     return response
@@ -230,16 +237,15 @@ def removeThread():
 
     sql = "UPDATE Thread SET isDeleted = 1 WHERE idThread = %s"
     cursor.execute(sql, [thread])
+    conn.commit()
 
     response = json.dumps({ "code": 0, "response": {"thread": thread}})
-    logging.info("REMOVING THREAD SUCCESSFULL\n")
     return response
     
 @app.route("/db/api/thread/restore/", methods = ['POST'])
 def restoreThread():
     from Post import restorePostsOfThread
     if "thread" in request.json:
-        logging.info("RESTORING THREAD")
 
         thread = request.json["thread"]
     else:
@@ -255,9 +261,9 @@ def restoreThread():
 
     sql = "UPDATE Thread SET isDeleted = 0 WHERE idThread = %s"
     cursor.execute(sql, [thread])
+    conn.commit()
 
     response = json.dumps({ "code": 0, "response": {"thread": thread}})
-    logging.info("REMOVING THREAD SUCCESSFULL\n")
     return response
     
 @app.route("/db/api/thread/subscribe/", methods = ['POST'])
@@ -320,6 +326,7 @@ def updateThread():
 
     sql = "UPDATE Thread SET message = %s, slug = %s WHERE idThread = %s"
     cursor.execute(sql, [message, slug, thread])
+    conn.commit()
 
     answer = getThreadDetailsByID(thread, [])
     response = json.dumps({"code": 0, "response": answer})
@@ -349,6 +356,7 @@ def voteThread():
 
     sql = "UPDATE Thread SET" + addition + " WHERE idThread = %s"
     cursor.execute(sql, [thread])
+    conn.commit()
 
     answer = getThreadDetailsByID(thread, [])
 

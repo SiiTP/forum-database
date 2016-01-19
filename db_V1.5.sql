@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `tp_db`.`User` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255),
   `email` VARCHAR(255) NOT NULL,
-  `name` CHAR(32) COMMENT '	',
+  `name` CHAR(255) COMMENT '	',
   `about` TEXT,
   `isAnonymous` TINYINT(1) NULL DEFAULT false,
   PRIMARY KEY (`idUser`),

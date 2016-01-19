@@ -1,26 +1,16 @@
 # -*- coding: utf-8 -*-
-from app import app, cursor
+from app import app, cursor, conn
 from functions import *
 from flask import request
 import json
 
 @app.route("/db/api/forum/create/", methods = ['POST'])
 def createForum():
-    logging.info("================FORUM CREATION")
-    # logging.info("REQUEST :")
-    # logging.info(request.json)
-    # logging.info("SH_NAME : " + request.json["short_name"])
-    # logging.info("USER : " + request.json["user"])
-    # logging.info("NAME : " + request.json["name"].encode("UTF-8"))
     try:
         name       = request.json["name"].encode("UTF-8")
-        logging.info("NAME : " + name)
         short_name = request.json["short_name"]
-        logging.info("SHORT_NAME : " + short_name)
         user       = request.json["user"]
-        logging.info("USER : " + user)
     except:
-        logging.info("error in parsing params")
         return json.dumps({"code": 2, "response": error_messages[2]})
 
     cursor.execute("SELECT idUser FROM User WHERE User.email = %s", [user])
@@ -31,19 +21,30 @@ def createForum():
 
     sql = "SELECT * FROM Forum WHERE name = %s"
     cursor.execute(sql, [name])
-    if (cursor.fetchone()):
-        return json.dumps({"code": 5, "response": error_messages[5]})
+    fetchone = cursor.fetchone()
+    if (fetchone):
+        print(fetchone)
+        return json.dumps({"code": 0, "response": getForumDetailsById(fetchone[0])})
+
+    sql = "SELECT * FROM Forum WHERE short_name = %s"
+    cursor.execute(sql, [short_name])
+    fetchone = cursor.fetchone()
+    if (fetchone):
+        print("n unique shName")
+        print(fetchone)
+        return json.dumps({"code": 0, "response": getForumDetailsById(fetchone[0])})
+
 
     sql = "INSERT INTO Forum (name, short_name, idFounder) VALUES (%s, %s, %s)"
     cursor.execute(sql, [name, short_name, id_User])
+    conn.commit()
 
     sql = "SELECT max(idForum) FROM Forum"
     cursor.execute(sql)
     idF = cursor.fetchone()[0]
-    answer = {"code": 0, "response": {"id": idF, "name": name, "short_name":short_name, "user": user}}
 
+    answer = {"code": 0, "response": {"id": idF, "name": name, "short_name": short_name, "user": user}}
     response = json.dumps(answer)
-    logging.info("================SUCCESSFUL FORUM CREATION\n")
     return response
     
 @app.route("/db/api/forum/details/", methods = ['GET'])
@@ -96,6 +97,10 @@ def forumListPosts():
     answer = []
     answer = getListPostsOfForum(forum, since, order, limit, related)
 
+    # if not answer:
+    #     print("empty 3")
+    #     return json.dumps({"code": 1, "response": error_messages[2]})
+
     response = json.dumps({"code": 0, "response": answer})
     logging.info("  Response : ")
     logging.info(response)
@@ -118,6 +123,10 @@ def forumListUsers():
     since   = getOptionalGetParameterOrDefault(request.args, "since", None)
 
     answer = getListUsersOfForum(forum, since, order, limit)
+
+    # if not answer:
+    #     print("empty 4")
+    #     return json.dumps({"code": 1, "response": error_messages[2]})
 
     response = json.dumps({"code": 0, "response": answer})
     logging.info("  Response : ")
@@ -149,6 +158,11 @@ def forumListThreads():
     logging.info("  related = " + str(related))
 
     answer = getListThreadsOfForum(forum, since, order, limit, related)
+
+    # if not answer:
+    #     print("empty 5")
+    #     return json.dumps({"code": 1, "response": error_messages[2]})
+
     response = json.dumps({"code": 0, "response": answer})
     logging.info("  Response : ")
     logging.info(response)
@@ -171,7 +185,7 @@ def getForumDetailsByShortName(short_name):
 
 def getForumIdByShortName(short_name):
     sql = "SELECT idForum FROM Forum WHERE short_name = %s"
-    print("SHORT_NAME : " + short_name)
+    # print("SHORT_NAME : " + short_name)
     cursor.execute(sql, [short_name])
     data = cursor.fetchone()
     if (not data):
