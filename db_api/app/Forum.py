@@ -23,15 +23,12 @@ def createForum():
     cursor.execute(sql, [name])
     fetchone = cursor.fetchone()
     if (fetchone):
-        print(fetchone)
         return json.dumps({"code": 0, "response": getForumDetailsById(fetchone[0])})
 
     sql = "SELECT * FROM Forum WHERE short_name = %s"
     cursor.execute(sql, [short_name])
     fetchone = cursor.fetchone()
     if (fetchone):
-        print("n unique shName")
-        print(fetchone)
         return json.dumps({"code": 0, "response": getForumDetailsById(fetchone[0])})
 
 

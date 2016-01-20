@@ -401,21 +401,6 @@ def getArrayUsersFromDoubleDictionary(dictionary):
         array.append(data)
     return array
 
-# `idPost` INT NOT NULL AUTO_INCREMENT,
-#   `parent` INT NULL DEFAULT NULL,
-#   `isApproved` TINYINT(1) NULL DEFAULT FALSE,
-#   `isHighlighted` TINYINT(1) NULL DEFAULT FALSE,
-#   `isEdited` TINYINT(1) NULL DEFAULT FALSE,
-#   `isSpam` TINYINT(1) NULL DEFAULT FALSE,
-#   `isDeleted` TINYINT(1) NULL DEFAULT FALSE,
-#   `likes` INT NOT NULL,
-#   `dislikes` INT NOT NULL,
-#   `date` DATETIME NOT NULL,
-#   `message` TEXT NOT NULL,
-#   `idForum` INT NOT NULL,
-#   `idThread` INT NOT NULL,
-#   `idAuthor` INT NOT NULL,
-
 def getListUsersOfForum(forum, since, order, limit):
     from Forum import getForumIdByShortName
     sql = "SELECT DISTINCT U.* FROM User U INNER JOIN Post P ON U.idUser = P.idAuthor WHERE P.idForum = %s"
